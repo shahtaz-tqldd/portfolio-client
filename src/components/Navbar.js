@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const navMenuItems = <>
-        <li><a href='https://drive.google.com/file/d/1lV9dIwZU1Ede97Fao-GY1s3EjLPyjvO-/view?usp=share_link' target="_blank" rel="noreferrer">Resume</a></li>
+        <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
+        <li><a href='https://drive.google.com/file/d/1lV9dIwZU1Ede97Fao-GY1s3EjLPyjvO-/view?usp=share_link' target="_blank" rel="noreferrer">Resume</a></li>
         <li><Link to='/contact'>Contact Me</Link></li>
     </>
     return (

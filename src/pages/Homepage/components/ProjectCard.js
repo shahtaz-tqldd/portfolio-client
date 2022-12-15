@@ -2,19 +2,23 @@ import React from 'react'
 import { HiExternalLink, HiServer } from 'react-icons/hi'
 import { GrGithub } from 'react-icons/gr'
 
-const ProjectCard = ({ project }) => {
-    const { name, img, liveLink, description, client, server, technologies } = project
+const ProjectCard = ({ project, setSelected }) => {
+    const { name, images, liveLink, description, client, server, technologies } = project
     return (
         <div className="card card-compact bg-neutral shadow-xl" data-aos="fade-up">
-            <figure><img src={img} alt={name} className="h-56 object-cover" /></figure>
+            <figure>
+                <img src={images[0]} alt={name} className="h-56 object-cover" />
+            </figure>
             <div className="card-body">
-                <h2 className="card-title text-white">{name}</h2>
+                <div className='flex justify-between items-center'>
+                    <h2 className="card-title text-white">{name}</h2>
+                    <label onClick={()=>setSelected(project)} htmlFor="project-modal" className='text-warning cursor-pointer hover:text-yellow-300'>See Details</label>
+                </div>
                 <p>{description}</p>
-               
                 <h2 className='font-bold text-primary'>Technology</h2>
                 <div className='flex flex-wrap gap-[6px] text-[11px]'>
                     {
-                        technologies.map(technology => <span className='px-2 py-[2px] rounded-sm bg-[#497174] text-white'>{technology}</span>)
+                        technologies.map((technology, index) => <span key={index} className='px-2 py-[2px] rounded-sm bg-[#497174] text-white'>{technology}</span>)
                     }
                 </div>
             </div>

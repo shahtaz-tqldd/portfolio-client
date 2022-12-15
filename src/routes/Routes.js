@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import ContactMe from "../pages/ContactMe/ContactMe";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../layouts/Main");
@@ -20,6 +21,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs/>
+            },
+            {
+                path: '/contact',
+                element: <ContactMe/>
             },
             {
                 path: '*',
