@@ -9,7 +9,7 @@ const ProjectModal = ({ project }) => {
         <div>
             <input type="checkbox" id="project-modal" className="modal-toggle" />
             <div className="modal">
-                <div className="modal-box w-11/12 max-w-5xl relative">
+                <div className="modal-box w-11/12 max-w-4xl relative">
                     <label htmlFor="project-modal" className="btn btn-sm btn-error btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-2xl">{name}</h3>
                     <p className="py-4">{description}</p>
@@ -19,7 +19,7 @@ const ProjectModal = ({ project }) => {
                         <div className="flex gap-3">
                             {images.map((item, index) => (
                                 <PhotoView key={index} src={item}>
-                                    <img src={item} alt="" className='h-32 object-contain cursor-pointer hover:scale-105 transition duration-300 rounded-md' />
+                                    <img src={item} alt="" className='h-32 object-contain cursor-pointer hover:scale-105 transition duration-300 rounded-sm' />
                                 </PhotoView>
                             ))}
                         </div>

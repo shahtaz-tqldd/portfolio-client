@@ -26,9 +26,9 @@ const ContactMeForm = () => {
 
                 <input name="user_email" type="email" placeholder="Your Email" className="input input-bordered w-full my-2 focus:outline-none focus:border-primary" />
 
-                <textarea name="message" className="textarea textarea-bordered w-full mt-5 h-64 focus:outline-none focus:border-primary" placeholder="Your Message"></textarea>
+                <textarea name="message" className="textarea textarea-bordered w-full mt-4 h-64 focus:outline-none focus:border-primary" placeholder="Your Message"></textarea>
 
-                <input type="submit" value="Send" className="btn btn-success rounded-md mt-5 mb-3 px-8" />
+                <input type="submit" value="Send" className="btn btn-success rounded-md mt-4 px-8" />
             </form>
         </div>
     )

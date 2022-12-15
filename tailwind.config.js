@@ -4,7 +4,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   daisyui: {
-    themes: ["night"],
+    themes: ["night", "winter"],
   },
   theme: {
     extend: {},

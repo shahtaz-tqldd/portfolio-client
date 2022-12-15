@@ -6,7 +6,7 @@ const AboutMe = () => {
   return (
     <div id='about' className="hero mt-20">
       <div className="hero-content flex-col lg:flex-row w-full justify-between">
-        <div data-aos="fade-right" className='mt-16'>
+        <div data-aos="fade-right" className='mt-16 ml-12'>
           <img src={bg} alt="shahtaz" className="max-w-sm relative" />
           <img src={about} alt="shahtaz" className="max-w-sm absolute bottom-8 -right-11" />
         </div>

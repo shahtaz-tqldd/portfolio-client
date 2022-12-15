@@ -1,8 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GrFacebookOption, GrGithub, GrLinkedinOption } from 'react-icons/gr'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+    const [dark, setDark] = useState(false)
+
+    if (dark) {
+        localStorage.setItem('dark-mode', true)
+    }
+    else {
+        localStorage.setItem('dark-mode', false)
+    }
+
+    const mode = JSON.parse(localStorage.getItem("dark-mode"))
+    console.log(mode)
+    useEffect(() => {
+        if (mode) {
+            document.querySelector("html").setAttribute("data-theme", "night")
+        } else {
+            document.querySelector("html").setAttribute("data-theme", "winter")
+        }
+    },[mode])
     const navMenuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
@@ -28,11 +46,12 @@ const Navbar = () => {
                         {navMenuItems}
                     </ul>
                 </div>
-                <div className='flex gap-3 text-white ml-8'>
-                    <a target='_blank' rel="noreferrer" href='https://www.facebook.com/shahtaz.rahman.3/' className='border-[1px] p-[5px] rounded-full hover:bg-primary transition duration-300'><GrFacebookOption/></a>
-                    <a target='_blank' rel="noreferrer" href='https://www.linkedin.com/in/shahtazrahman/' className='border-[1px] p-[5px] rounded-full hover:bg-primary transition duration-300'><GrLinkedinOption/></a>
+                <div className='flex gap-3 text-white mx-8'>
+                    <a target='_blank' rel="noreferrer" href='https://www.facebook.com/shahtaz.rahman.3/' className='border-[1px] p-[5px] rounded-full hover:bg-primary hover:text-neutral transition duration-300'><GrFacebookOption/></a>
+                    <a target='_blank' rel="noreferrer" href='https://www.linkedin.com/in/shahtazrahman/' className='border-[1px] p-[5px] rounded-full hover:bg-primary hover:text-neutral transition duration-300'><GrLinkedinOption/></a>
                     <a target='_blank' rel="noreferrer" href='https://github.com/shahtaz-tqldd/' className='text-[28px] hover:text-primary transition duration-300'><GrGithub/></a>
                 </div>
+                <button onClick={()=>setDark(!dark)} className='btn btn-sm'>{!dark?'dark' : 'light'}</button>
             </div>
         </div>
     )

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import ProjectCard from './ProjectCard'
 import bookShrore from '../../../assets/images/bookShore.png'
+import bookshore1 from '../../../assets/images/bookshore1.png'
+import bookshore2 from '../../../assets/images/bookshore2.png'
 import adornment from '../../../assets/images/adornment.png'
 import adaAcademy from '../../../assets/images/adaAcademy.png'
 import esteTeri from '../../../assets/images/esteTeri.png'
@@ -14,6 +16,8 @@ const Projects = () => {
             "name": "Bookshore",
             "images": [
                 bookShrore,
+                bookshore1,
+                bookshore2
             ],
             "description": "A ecommerce website for buying and selling second-hand books",
             "technologies": ["HTML", "CSS", "Tailwind", "Daisy UI", "React JS", "Node JS", "Express", "Firebase", "JWT Authentication", "Mongo DB"],
