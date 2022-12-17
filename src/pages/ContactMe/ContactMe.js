@@ -6,7 +6,7 @@ import SideBar from './components/SideBar'
 const ContactMe = () => {
     useTitle('Contact')
     return (
-        <div className='flex flex-col lg:flex-row gap-8 lg:mt-28'>
+        <div className='flex flex-col lg:flex-row gap-8 mt-12'>
             <div className='lg:w-1/3'>
                 <SideBar />
             </div>

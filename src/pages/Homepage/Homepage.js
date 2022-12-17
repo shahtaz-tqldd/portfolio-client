@@ -10,7 +10,7 @@ import TopBanner from './components/TopBanner'
 const Homepage = () => {
   useTitle('Portfolio')
   return (
-    <div className='max-w-[1230px] mx-auto mt-24'>
+    <div className='max-w-[1230px] mx-auto lg:mt-20'>
       <TopBanner />
       <AboutMe />
       <Services />

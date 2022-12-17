@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { GrFacebookOption, GrGithub, GrLinkedinOption } from 'react-icons/gr'
+import { CiLight } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
+import { MdDarkMode } from 'react-icons/md'
+import SocialLinks from './SocialLinks'
 
 const Navbar = () => {
+    const mode = JSON.parse(localStorage.getItem("dark-mode"))
     const [dark, setDark] = useState(false)
 
     if (dark) {
@@ -12,15 +15,15 @@ const Navbar = () => {
         localStorage.setItem('dark-mode', false)
     }
 
-    const mode = JSON.parse(localStorage.getItem("dark-mode"))
     console.log(mode)
     useEffect(() => {
-        if (mode) {
-            document.querySelector("html").setAttribute("data-theme", "night")
+        if (!mode) {
+            document.querySelector("html").setAttribute("data-theme", "darkTheme")
         } else {
-            document.querySelector("html").setAttribute("data-theme", "winter")
+            document.querySelector("html").setAttribute("data-theme", "lightTheme")
         }
-    },[mode])
+    }, [mode])
+
     const navMenuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
@@ -28,30 +31,28 @@ const Navbar = () => {
         <li><Link to='/contact'>Contact Me</Link></li>
     </>
     return (
-        <div className='bg-[#2B3A55] fixed top-0 left-0 right-0 z-10'>
-            <div className="navbar max-w-[1250px] mx-auto">
+        <div className='bg-secondary w-full fixed top-0 left-0 right-0 z-10 shadow-xl'>
+            <div className="navbar max-w-[1250px] mx-auto justify-between">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-4 shadow bg-secondary rounded-box w-52">
                             {navMenuItems}
+                            <SocialLinks/>
                         </ul>
                     </div>
-                    <Link to='/' className="normal-case text-2xl text-primary">Shahtaz R.</Link>
+                    <Link to='/' className="normal-case lg:text-2xl md:text-2xl text-xl text-white font-bold">Shahtaz R.</Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         {navMenuItems}
                     </ul>
+                    <SocialLinks/>
                 </div>
-                <div className='flex gap-3 text-white mx-8'>
-                    <a target='_blank' rel="noreferrer" href='https://www.facebook.com/shahtaz.rahman.3/' className='border-[1px] p-[5px] rounded-full hover:bg-primary hover:text-neutral transition duration-300'><GrFacebookOption/></a>
-                    <a target='_blank' rel="noreferrer" href='https://www.linkedin.com/in/shahtazrahman/' className='border-[1px] p-[5px] rounded-full hover:bg-primary hover:text-neutral transition duration-300'><GrLinkedinOption/></a>
-                    <a target='_blank' rel="noreferrer" href='https://github.com/shahtaz-tqldd/' className='text-[28px] hover:text-primary transition duration-300'><GrGithub/></a>
-                </div>
-                <button onClick={()=>setDark(!dark)} className='btn btn-sm'>{!dark?'dark' : 'light'}</button>
+
+                <button onClick={() => setDark(!dark)} className='text-2xl'>{dark ? <span><MdDarkMode /></span> : <span><CiLight className='text-yellow-500' /></span>}</button>
             </div>
         </div>
     )

@@ -77,8 +77,8 @@ const Projects = () => {
     const [selected, setSelected] = useState(null)
     return (
         <>
-            <h1 className='text-5xl font-bold text-center mb-16'>Project Showcase</h1>
-            <div className='grid lg:grid-cols-3 gap-6'>
+            <h1 className='lg:text-5xl md:text-4xl text-3xl mb-12 mt-20 font-bold text-center'>Project Showcase</h1>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6'>
                 {projects.map(project => <ProjectCard key={project.id} project={project} setSelected={setSelected} />)}
             </div>
             {

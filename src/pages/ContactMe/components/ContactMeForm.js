@@ -18,17 +18,15 @@ const ContactMeForm = () => {
             });
     };
     return (
-        <div data-aos="fade-up" className='bg-neutral rounded-lg p-6'>
-            <h2 className='mb-6 text-xl text-white'>Send me your Message or Queries</h2>
+        <div data-aos="fade-up" className='bg-neutral rounded-lg p-6 shadow-lg'>
+            <h2 className='mb-6 text-xl font-bold'>Send me your Message or Queries</h2>
             
             <form ref={form} onSubmit={sendEmail}>
-                <input name="user_name" type="text" placeholder="Your Name" className="input input-bordered w-full my-2 focus:outline-none focus:border-primary" />
+                <input name="user_name" type="text" placeholder="Your Name" className="input input-bordered w-full my-2 focus:outline-none focus:border-primary" required/>
+                <input name="user_email" type="email" placeholder="Your Email" className="input input-bordered w-full my-2 focus:outline-none focus:border-primary" required/>
+                <textarea name="message" className="textarea textarea-bordered w-full mt-4 h-64 focus:outline-none focus:border-primary" placeholder="Your Message" required></textarea>
 
-                <input name="user_email" type="email" placeholder="Your Email" className="input input-bordered w-full my-2 focus:outline-none focus:border-primary" />
-
-                <textarea name="message" className="textarea textarea-bordered w-full mt-4 h-64 focus:outline-none focus:border-primary" placeholder="Your Message"></textarea>
-
-                <input type="submit" value="Send" className="btn btn-success rounded-md mt-4 px-8" />
+                <input type="submit" value="Send" className="btn btn-success text-white rounded-md mt-4 px-8" />
             </form>
         </div>
     )

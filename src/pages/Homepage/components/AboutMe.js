@@ -6,9 +6,9 @@ const AboutMe = () => {
   return (
     <div id='about' className="hero mt-20">
       <div className="hero-content flex-col lg:flex-row w-full justify-between">
-        <div data-aos="fade-right" className='mt-16 ml-12'>
+        <div data-aos="fade-right" className='mt-8'>
           <img src={bg} alt="shahtaz" className="max-w-sm relative" />
-          <img src={about} alt="shahtaz" className="max-w-sm absolute bottom-8 -right-11" />
+          <img src={about} alt="shahtaz" className="max-w-sm scale-90 absolute bottom-[13px] overflow-hidden -translate-x-[12%]" />
         </div>
         <div className='lg:w-1/2' data-aos="fade-left">
           <h1 className="text-xl font-bold">About Me</h1>

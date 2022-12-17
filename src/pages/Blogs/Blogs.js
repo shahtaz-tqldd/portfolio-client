@@ -44,7 +44,7 @@ const Blogs = () => {
   ]
   return (
     <div>
-      <h2 className='text-2xl font-bold mt-28'>Noob Dev. Blogs</h2>
+      <h2 className='text-2xl font-bold mt-12'>Noob Dev. Blogs</h2>
       <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 mt-8'>
         {
           blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)

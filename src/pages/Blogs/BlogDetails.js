@@ -16,10 +16,10 @@ const BlogDetails = () => {
     }
     const { title, body, img, date, tags } = blog
     return (
-        <div className='lg:w-2/3 mt-24'>
+        <div className='lg:w-2/3'>
             <Link to='/blogs' className='btn bg-neutral'>Go Back</Link>
             <img src={img} alt="" className='h-[350px] w-full object-cover rounded mt-6'/>
-            <h2 className='text-3xl font-bold mb-2 mt-6 text-white'>{title}</h2>
+            <h2 className='text-3xl font-bold mb-2 mt-6'>{title}</h2>
             <div className='mt-1 flex gap-2 text-xs text-success mb-2'>
                 {
                     tags.map((tag, i) => <span id={i}>{tag}&nbsp;&nbsp;{(i + 1) < tags.length && '|'}</span>)
