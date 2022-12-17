@@ -3,7 +3,7 @@ import React from 'react'
 const SkillCard = ({ sets }) => {
     const {skillSet, setsName} = sets
     return (
-        <div className='bg-neutral rounded-lg p-4 shadow-lg' data-aos="fade-down">
+        <div className='bg-neutral rounded-lg p-4 shadow-lg' data-aos="fade-up">
             <span className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-6 py-1 rounded text-white ml-3'>{setsName}</span>
             <div className='grid grid-cols-3 gap-6 mb-8 mt-10'>
                 {
