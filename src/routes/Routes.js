@@ -34,7 +34,8 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/blogs/:title',
-                element: <BlogDetails/>
+                element: <BlogDetails />,
+                loader: async({params})=> await fetch(`https://portfolio-backend-sepia-seven.vercel.app/blogs/${params.title}`)
             },
             {
                 path: '/contact',

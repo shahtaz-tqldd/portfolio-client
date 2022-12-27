@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 body {
   margin: 0;
   /* font-family: 'Montserrat', sans-serif; */
@@ -16,4 +17,7 @@ main{
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+h6{
+  font-family: 'Righteous', cursive;
 }

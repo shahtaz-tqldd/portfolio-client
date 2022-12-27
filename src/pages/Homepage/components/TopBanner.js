@@ -19,8 +19,8 @@ const TopBanner = () => {
         return () => clearTimeout(intervalId);
     }, []);
     return (
-        <div className="w-full flex flex-col md:flex-row-reverse items-start lg:items-center md:items-center lg:flex-row-reverse justify-between lg:mt-32">
-            <figure className='lg:w-1/2 md:w-1/2 w-full flex justify-center items-center mb-8' data-aos="fade-left"><img src={profile} alt='banner' className="lg:h-[450px] md:h-[400px] h-[350px] object-cover rounded-xl" /></figure>
+        <div className="w-full flex flex-col md:flex-row-reverse items-start lg:items-center md:items-center lg:flex-row-reverse justify-between lg:mt-36">
+            <figure className='lg:w-1/2 md:w-1/2 flex justify-center items-center mb-8' data-aos="fade-left"><img src={profile} alt='banner' className="lg:h-[450px] md:h-[400px] h-[350px] object-cover rounded-xl" /></figure>
             <div className='lg:w-1/2 md:w-1/2 flex lg:flex-row md:flex-row flex-col-reverse justify-start lg:items-center gap-10' data-aos="fade-right">
                 <div className='text-2xl lg:flex md:flex gap-6 lg:flex-col md:flex-col hidden'>
                     <SocialLinks2 />

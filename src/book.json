@@ -1,0 +1,30 @@
+{
+    "name": "Bookshore",
+    "description": "A ecommerce website for buying and selling second-hand books",
+    "images": [
+        "https://i.ibb.co/PmzgHt4/book-Shore.png",
+        "https://i.ibb.co/ThhvJbS/bookshore1.png",
+        "https://i.ibb.co/2j8hb55/bookshore2.png"
+    ],
+    "features": [
+        "An Ecommerce website where a user can sell books and buy from other",
+        "Firebase Authentication, MongoDB used to store product data",
+        "User Dashboard management and Admin Authorization"
+    ],
+    "duration" : "Nov 22, 2022 -  Nov 27, 2022",
+    "technologies": [
+        "HTML",
+        "CSS",
+        "Tailwind",
+        "Daisy UI",
+        "React JS",
+        "Node JS",
+        "Express",
+        "Firebase",
+        "JWT Authentication",
+        "Mongo DB"
+    ],
+    "client": "https://github.com/shahtaz-tqldd/bookshore-client",
+    "server": "https://github.com/shahtaz-tqldd/bookshore-server",
+    "liveLink": "https://bookshore-cd9c4.web.app/"
+}

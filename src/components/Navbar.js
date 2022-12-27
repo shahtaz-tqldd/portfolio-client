@@ -32,7 +32,7 @@ const Navbar = () => {
         {user && <li><Link to='/dashboard'>Manage</Link></li>}
     </>
     return (
-        <div className='bg-secondary fixed top-0 left-0 right-0 z-10 shadow-xl'>
+        <div className='bg-secondary fixed top-0 left-0 right-0 z-10 shadow-lg'>
             <div className="navbar max-w-[1250px] mx-auto justify-between">
                 <div className="navbar-start">
                     <div className="dropdown">

@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import skillImg from '../../../assets/images/skills.gif'
-import Loading from '../../../components/Loading'
 import SkillCard from './SkillCard'
 
 const MySkills = () => {
-    const { data: skills = [], isLoading} = useQuery({
+    const { data: skills = []} = useQuery({
         queryKey: ['skills'],
         queryFn: async() => {
             const res = await fetch('https://portfolio-backend-sepia-seven.vercel.app/skills')
@@ -13,10 +12,6 @@ const MySkills = () => {
             return data                
         }
     })
-
-    if (isLoading) {
-        return <Loading/>
-    }
     
     return (
         <div className='flex lg:flex-row flex-col gap-8 my-32'>
