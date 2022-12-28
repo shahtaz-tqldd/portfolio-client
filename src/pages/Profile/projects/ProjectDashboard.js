@@ -1,10 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useState } from 'react'
 import { HiExternalLink, HiServer } from 'react-icons/hi'
 import { GrGithub } from 'react-icons/gr'
 import ProjectAddModal from '../components/ProjectAddModal'
+import DeleteBlogModal from '../components/DeleteBlogModal'
+import { toast } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const ProjectDashboard = () => {
+    const [project, setProject] = useState(null)
+    const navigate = useNavigate()
     const { data: projects = [] } = useQuery({
         queryKey: ['projects'],
         queryFn: async () => {
@@ -13,6 +18,16 @@ const ProjectDashboard = () => {
             return data
         }
     })
+    const handleDeleteProject = () => {
+        fetch(`https://portfolio-backend-sepia-seven.vercel.app/projects/${project}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(() => {
+                toast.success("Project deleted successfully")
+                navigate('/')
+            })
+    }
     return (
         <div className='w-full'>
             <div className='flex items-center justify-between'>
@@ -47,7 +62,7 @@ const ProjectDashboard = () => {
 
                                 </td>
                                 <td><button className='btn btn-ghost rounded text-primary normal-case'>Update</button></td>
-                                <td><button className='btn btn-ghost rounded text-error normal-case'>Delete</button></td>
+                                <td><label htmlFor='delete-blog-modal' onClick={()=>setProject(project.name)} className='btn btn-ghost rounded text-error normal-case'>Delete</label></td>
                             </tr>
                             )
                         }
@@ -56,6 +71,10 @@ const ProjectDashboard = () => {
                 </table>
             </div>
             <ProjectAddModal />
+            <DeleteBlogModal
+                handleDelete={handleDeleteProject}
+                type={'project'}
+                title={ project } />
         </div>
     )
 }

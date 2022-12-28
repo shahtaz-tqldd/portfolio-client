@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthProvider'
 import BlogEditModal from '../Profile/components/BlogEditModal'
 import { BsArrowLeftCircleFill } from 'react-icons/bs'
 import { toast } from 'react-hot-toast'
+import DeleteBlogModal from '../Profile/components/DeleteBlogModal'
 
 const BlogDetails = () => {
     const data = useLoaderData()
@@ -37,11 +38,15 @@ const BlogDetails = () => {
             {user &&
                 <div className='mt-12 flex gap-6'>
                     <label htmlFor='blog-edit-modal' className="btn btn-info text-white">Edit Blog</label>
-                    <button onClick={handleDelete} className='btn btn-error text-white'>Delete this Blog</button>
+                    <label htmlFor='delete-blog-modal' className='btn btn-error text-white'>Delete this Blog</label>
                 </div>
             }
 
             <BlogEditModal blog={data} />
+            <DeleteBlogModal
+                handleDeleteBlog={handleDelete}
+                type = {'blog'}
+                title={title} />
         </div>
     )
 }

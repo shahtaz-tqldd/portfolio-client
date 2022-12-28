@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
-import React from 'react'
+import React, { useRef, useState } from 'react'
+import JoditEditor from 'jodit-react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -7,13 +8,16 @@ import { useNavigate } from 'react-router-dom';
 const BlogEditModal = ({ blog }) => {
     const { title, body, tags, _id } = blog
     const navigate = useNavigate()
+    const editor = useRef(null)
+    const [content, setContent] = useState(body)
+
     const { register, handleSubmit } = useForm();
     const date = format(new Date(), 'PP')
     const imgHostKey = process.env.REACT_APP_imgbb_hostKey
     const handleBlogEditSubmit = data => {
-        const { body, title, tag1, tag2, tag3 } = data
+        const { title, tag1, tag2, tag3 } = data
         const blogInfo = {
-            title, body,
+            title, body:content,
             tags: [tag1, tag2, tag3],
             date,
         }
@@ -80,7 +84,12 @@ const BlogEditModal = ({ blog }) => {
                         <input {...register("tag3")} type="text" defaultValue={tags[2]} className="my-2 mr-3 input input-bordered w-1/4" />
 
                         {/* blog body */}
-                        <textarea {...register("body")} type="text" defaultValue={body} className="my-2 py-2 input input-bordered w-full h-64" />
+                        <JoditEditor
+                            ref={editor}
+                            value={content}
+                            onChange={newContent => setContent(newContent)}
+                        />
+                        {/* <textarea {...register("body")} type="text" defaultValue={body} className="my-2 py-2 input input-bordered w-full h-64" /> */}
 
                         {/* header image */}
                         <div className='text-2xl font-bold text-success mt-6'>Add a header image</div>

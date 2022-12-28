@@ -1,20 +1,23 @@
 import { format } from 'date-fns';
-import React from 'react'
+import JoditEditor from 'jodit-react';
+import React, { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const WriteBlogModal = () => {
     const navigate = useNavigate()
+    const editor = useRef(null)
+    const [content, setContent] = useState('')
     const { register, handleSubmit, formState: { errors } } = useForm();
     const date = format(new Date(), 'PP')
     const imgHostKey = process.env.REACT_APP_imgbb_hostKey
 
     const handleBlogSubmit = data => {
-        const { body, title, tag1, tag2, tag3 } = data
+        const { title, tag1, tag2, tag3 } = data
         const image = data.img[0]
         const blogInfo = {
-            title, body,
+            title, body:content,
             tags: [tag1, tag2, tag3],
             date,
         }
@@ -62,16 +65,20 @@ const WriteBlogModal = () => {
                         {/* tags */}
                         <input {...register("tag1", { required: "This field can not be empty" })} type="text" placeholder="tag-1" className="my-2 mr-3 input input-bordered w-1/4" />
                         {errors.tag1 && <span className='text-error'>{errors.tag1.message}</span>}
-                        
+
                         <input {...register("tag2", { required: "This field can not be empty" })} type="text" placeholder="tag-2" className="my-2 mr-3 input input-bordered w-1/4" />
                         {errors.tag2 && <span className='text-error'>{errors.tag2.message}</span>}
-                        
+
                         <input {...register("tag3", { required: "This field can not be empty" })} type="text" placeholder="tag-3" className="my-2 mr-3 input input-bordered w-1/4" />
                         {errors.tag3 && <span className='text-error'>{errors.tag3.message}</span>}
 
                         {/* blog body */}
-                        <textarea {...register("body", { required: "This field can not be empty" })} type="text" placeholder="write here" className="my-2 py-2 input input-bordered w-full h-64" />
-                        {errors.body && <span className='text-error'>{errors.body.message}</span>}
+                        <JoditEditor
+                            ref={editor}
+                            value={content}
+                            onChange={newContent => setContent(newContent)}
+                            className="text-[#000]"
+                        />
 
                         {/* header image */}
                         <div className='text-2xl font-bold text-success mt-6'>Add a header image</div>
