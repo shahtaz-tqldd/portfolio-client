@@ -22,16 +22,16 @@ const BlogDetails = () => {
             })
     }
     return (
-        <div className='lg:w-2/3 mx-auto'>
+        <section className='lg:w-[60%] mx-auto mt-8'>
             <Link to='/blogs' className='text-info text-4xl -ml-20 fixed'><BsArrowLeftCircleFill /></Link>
-            <img src={img} alt="" className='h-[350px] w-full object-cover rounded mt-6' />
-            <h2 className='text-3xl font-bold mb-2 mt-6'>{title}</h2>
+            <img src={img} alt="" className='h-[350px] w-full object-cover' />
+            <h2 className='text-4xl font-bold mb-2 mt-6'>{title}</h2>
             <div className='mt-1 flex gap-2 text-xs text-success mb-2'>
                 {
                     tags?.map((tag, i) => <span id={i}>{tag}&nbsp;&nbsp;{(i + 1) < tags.length && '|'}</span>)
                 }
             </div>
-            <p className='text-sm mb-5'>Posted on: {date}</p>
+            <p className='text-sm mb-5'>Posted on : {date}</p>
             <p className='text-justify text-[16px]' dangerouslySetInnerHTML={{ __html: body }} />
 
 
@@ -45,9 +45,9 @@ const BlogDetails = () => {
             <BlogEditModal blog={data} />
             <DeleteBlogModal
                 handleDeleteBlog={handleDelete}
-                type = {'blog'}
+                type={'blog'}
                 title={title} />
-        </div>
+        </section>
     )
 }
 

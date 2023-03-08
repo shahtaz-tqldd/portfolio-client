@@ -41,11 +41,11 @@ const ProjectAddModal = () => {
         const { name, details, strtDate, endDate, client, server, liveLink } = data
         let technologies = [];
         for (const key in data) {
-            { key.includes('tech') && technologies.push(`${data[key]}`) }
+            key.includes('tech') && technologies.push(`${data[key]}`)
         }
         let features = [];
         for (const key in data) {
-            { key.includes('feature') && features.push(`${data[key]}`) }
+            key.includes('feature') && features.push(`${data[key]}`)
         }
         const allInfo = {
             name,
@@ -62,7 +62,7 @@ const ProjectAddModal = () => {
         }
         const image = data.img[0]
         const formData = new FormData()
-        formData.append('image',image)
+        formData.append('image', image)
         console.log(formData)
         fetch(`https://api.imgbb.com/1/upload?key=${imgHostKey}`, {
             method: 'POST',
@@ -72,7 +72,7 @@ const ProjectAddModal = () => {
             .then(imgData => {
                 if (imgData.success) {
                     const img = imgData.data.url;
-                    const projectInfo = {...allInfo, img}
+                    const projectInfo = { ...allInfo, img }
                     fetch('https://portfolio-backend-sepia-seven.vercel.app/projects', {
                         method: 'POST',
                         headers: {
@@ -87,7 +87,7 @@ const ProjectAddModal = () => {
                         })
                 }
             }
-        )
+            )
     }
     return (
         <div>
@@ -143,7 +143,7 @@ const ProjectAddModal = () => {
                         <h2 className='text-2xl text-success font-bold mt-5 mb-3'>Upload a image</h2>
                         <input {...register("img", { required: "This field can not be empty" })} type="file" className="my-2 input input-bordered" />
                         {errors.img && <span className='text-error'>{errors.img.message}</span>}
-                        
+
 
                         <div className='flex justify-center mt-10'>
                             <input type="submit" value="submit" className="btn btn-wide btn-primary text-white" />

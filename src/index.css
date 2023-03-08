@@ -2,21 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 body {
   margin: 0;
   /* font-family: 'Montserrat', sans-serif; */
   font-family: 'Poppins', sans-serif;
+  background-color: #f5f3ef;
 }
 main{
-  max-width: 1250px;
-  padding: 0 18px;
-  margin: 80px auto 0;
-  min-height: 70vh;
-}
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  padding: 60px 0;
+  min-height: 80vh;
 }
 h6{
   font-family: 'Righteous', cursive;

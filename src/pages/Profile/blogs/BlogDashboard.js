@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useTitle from '../../../hooks/useTitle'
 import WriteBlogModal from '../components/WriteBlogModal'
 
 const BlogDashboard = () => {
+    useTitle('Blog Dashboard')
     const { data: blogs = [] } = useQuery({
         queryKey: ['blogs'],
         queryFn: async () => {

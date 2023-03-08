@@ -6,8 +6,10 @@ import ProjectAddModal from '../components/ProjectAddModal'
 import DeleteBlogModal from '../components/DeleteBlogModal'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import useTitle from '../../../hooks/useTitle'
 
 const ProjectDashboard = () => {
+    useTitle('Project Dashboard')
     const [project, setProject] = useState(null)
     const navigate = useNavigate()
     const { data: projects = [] } = useQuery({

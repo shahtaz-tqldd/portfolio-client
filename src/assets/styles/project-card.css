@@ -1,0 +1,61 @@
+.project-card {
+    position: relative;
+}
+
+.project-card-content {
+    position: absolute;
+    display: none;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.project-card:hover .project-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation-name: hover-animation-content;
+    animation-duration: 0.3s;
+}
+
+@keyframes hover-animation-content {
+    from {
+        opacity: 0;
+        top: -30px;
+    }
+
+    to {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+.overlay {
+    display: none;
+}
+
+.project-card:hover .overlay {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    opacity: .95;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation-name: hover-animation;
+    animation-duration: 0.3s;
+}
+
+@keyframes hover-animation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: .95;
+    }
+}

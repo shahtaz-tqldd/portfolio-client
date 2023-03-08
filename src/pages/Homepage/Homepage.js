@@ -1,26 +1,27 @@
 import React from 'react'
 import useTitle from '../../hooks/useTitle'
-import AboutMe from './components/AboutMe'
-import ContactBanner from './components/ContactBanner'
-import MySkills from './components/MySkills'
-import Projects from './components/Projects'
-import Services from './components/Services'
-import TopBanner from './components/TopBanner'
+import AboutMe from './AboutMe/AboutMe'
+import MySkills from './MySkills/MySkills'
+import Projects from './Projects/Projects'
+import Services from './Services/Services'
+import TopBanner from './TopBanner/TopBanner'
+import ContactMe from './ContactMe/ContactMe'
 
 const Homepage = () => {
   useTitle('Portfolio')
   return (
-    <div className='max-w-[1230px] mx-auto lg:mt-20'>
-      <TopBanner />
-      <AboutMe />
-      <Services />
-      <MySkills />
-      <Projects />
-
-      <div className='lg:w-2/3 mx-auto mt-24'>
-        <ContactBanner/>
+    <>
+      <div className='max-w-[1230px] mx-auto px-3'>
+        <TopBanner />
       </div>
-    </div>
+      <AboutMe />
+      <div className='max-w-[1230px] mx-auto px-3'>
+        <Services />
+        <MySkills />
+        <Projects />
+        <ContactMe />
+      </div>
+    </>
   )
 }
 

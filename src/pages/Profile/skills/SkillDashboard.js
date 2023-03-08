@@ -1,7 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
+import useTitle from '../../../hooks/useTitle'
 
 const SkillDashboard = () => {
+    useTitle('Skills Dashboard')
     const { data: skills = [] } = useQuery({
         queryKey: ['skills'],
         queryFn: async () => {

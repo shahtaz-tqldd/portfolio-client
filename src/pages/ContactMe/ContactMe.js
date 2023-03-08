@@ -1,19 +1,19 @@
 import React from 'react'
 import useTitle from '../../hooks/useTitle'
-import ContactMeForm from './components/ContactMeForm'
-import SideBar from './components/SideBar'
+import ContactMeForm from './ContactForm/ContactMeForm'
+import SideBar from './SideBar/SideBar'
 
 const ContactMe = () => {
     useTitle('Contact')
     return (
-        <div className='flex flex-col lg:flex-row gap-8 mt-12'>
-            <div className='lg:w-1/3'>
+        <section className='max-w-[1230px] mx-auto px-3 flex flex-col lg:flex-row gap-16 mt-8'>
+            <div className='lg:w-[40%]'>
                 <SideBar />
             </div>
-            <div className='lg:w-2/3'>
+            <div className='lg:w-[60%] bg-[#93C6E7] rounded-2xl'>
                 <ContactMeForm />
             </div>
-        </div>
+        </section>
     )
 }
 
