@@ -1,0 +1,48 @@
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skills{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.projects{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+@media screen and (max-width: 1200px) and (min-width:500px)  {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .skills{
+        grid-template-columns: repeat(5, 1fr);
+        gap: 16px;
+    }
+    .projects{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
+@media screen and (max-width: 500px)  {
+    .services {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .skills{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .projects{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+}
+@media screen and (max-width: 1000px) and (min-width: 600px)  {
+    .projects{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

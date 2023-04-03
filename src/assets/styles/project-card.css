@@ -5,6 +5,7 @@
 .project-card-content {
     position: absolute;
     display: none;
+    
     z-index: 2;
     top: 0;
     left: 0;
@@ -16,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    border-radius: 20px;
     animation-name: hover-animation-content;
     animation-duration: 0.3s;
 }
@@ -24,12 +25,12 @@
 @keyframes hover-animation-content {
     from {
         opacity: 0;
-        top: -30px;
+        bottom: -30px;
     }
 
     to {
         opacity: 1;
-        top: 0;
+        bottom: 0;
     }
 }
 
@@ -39,9 +40,10 @@
 
 .project-card:hover .overlay {
     display: block;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(46, 46, 46);
     opacity: .95;
     position: absolute;
+    border-radius: 20px;
     top: 0;
     bottom: 0;
     left: 0;

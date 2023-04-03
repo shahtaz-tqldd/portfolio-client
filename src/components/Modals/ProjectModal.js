@@ -16,19 +16,19 @@ const ProjectModal = ({ data }) => {
                     <div>
                         {/* PROJECT NAME & LIVE SITE BUTTON */}
                         <div className='flex justify-between lg:pr-8 pr-3'>
-                            <h3 className="text-2xl font-bold text-[#7286D3]">{name}</h3>
-                            <a href={liveLink} target="_blank" rel='noreferrer' className='btn lg:btn-md btn-sm btn-outline rounded-full lg:px-8 normal-case text-primary hover:text-white transition duration-300'>See Live Site</a>
+                            <h3 className="text-3xl font-bold text-primary">{name}</h3>
+                            <a href={liveLink} target="_blank" rel='noreferrer' className='btn btn-primary btn-sm rounded-full px-5 normal-case transition duration-300'>Live Site</a>
                         </div>
 
                         {/* DESCRIPTION */}
-                        <p className="pt-1 mb-5">{description}</p>
+                        <p className="pt-3 mb-8 text-accent text-xl">{description}</p>
 
                         <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5'>
                             <div>
                                 {/* FEATURES */}
                                 <div>
-                                    <h2 className='font-bold mb-2 flex items-center gap-2 color-green'> <MdOutlineFeaturedPlayList />Key Features of this Project</h2>
-                                    <ul className=''>
+                                    <h2 className='mb-4 flex items-center gap-2 text-white text-xl'> <MdOutlineFeaturedPlayList />Key Features</h2>
+                                    <ul className='text-accent'>
                                         {
                                             features?.map((feature, index) => <li className='text-sm flex items-start gap-2 mb-2' key={index}>
                                                 <span className='h-4 w-4'>
@@ -47,16 +47,16 @@ const ProjectModal = ({ data }) => {
                                 </div>
                                 {/* DURATION */}
                                 <div>
-                                    <h2 className='font-bold mb-2 flex items-center gap-2 color-green mt-6'><MdOutlineCalendarToday />Duration of this project</h2>
-                                    <p className='text-sm'>{duration}</p>
+                                    <h2 className='mb-4 flex items-center gap-2 text-white mt-10 text-xl'><MdOutlineCalendarToday />Duration of completion</h2>
+                                    <p className='text-sm text-accent'>{duration}</p>
                                 </div>
                             </div>
 
                             <div>
                                 {/* TECHNOLOGY STACK */}
                                 <div>
-                                    <h2 className='font-bold mb-2 flex items-center gap-2 color-green'><HiCode />Technology Stack</h2>
-                                    <div className='flex flex-wrap gap-2'>
+                                    <h2 className='mb-4 flex items-center gap-2 text-white text-xl'><HiCode />Technology Stack</h2>
+                                    <div className='flex flex-wrap gap-2 text-base-100'>
                                         {
                                             technologies?.map((tech, index) => <span
                                                 className={`py-1 px-3 text-xs ${((index % 4) === 0 && 'bg-[#DDF7E3]') ||
@@ -70,15 +70,15 @@ const ProjectModal = ({ data }) => {
                                 </div>
                                 {/* SOURCE CODE */}
                                 <div>
-                                    <h2 className='font-bold mb-2 flex items-center gap-2 color-green mt-6'><GrGithub />Source Code</h2>
-                                    <div className="flex gap-3 text-sm">
+                                    <h2 className='mb-4 flex items-center gap-2 text-white mt-10 text-xl'><GrGithub />Source Code</h2>
+                                    <div className="flex gap-5 text-sm">
                                         {client?.length > 0 && <a href={client} target="_blank" rel='noreferrer' className='text-primary hover:text-blue-500 transition duration-300 flex items-center gap-1'><GrGithub />Client Side</a>}
                                         {server?.length > 0 && <a href={server} target="_blank" rel='noreferrer' className='text-error hover:text-red-500 transition duration-300 flex items-center gap-1'><HiServer />Server Side</a>}
                                     </div>
                                 </div>
                             </div>
                             <div>
-                                <h2 className='font-bold mb-2 flex items-center gap-2 color-green'><BsCamera />Project Screenshots</h2>
+                                <h2 className='mb-4 flex items-center gap-2 text-white text-xl'><BsCamera />Project Screenshots</h2>
                                 <PhotoProvider>
                                     <div className="flex flex-wrap gap-3">
                                         {images?.map((item, index) => (

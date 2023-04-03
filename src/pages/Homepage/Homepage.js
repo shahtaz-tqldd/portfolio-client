@@ -4,24 +4,22 @@ import AboutMe from './AboutMe/AboutMe'
 import MySkills from './MySkills/MySkills'
 import Projects from './Projects/Projects'
 import Services from './Services/Services'
-import TopBanner from './TopBanner/TopBanner'
 import ContactMe from './ContactMe/ContactMe'
+import TopBanner from './TopBanner/TopBanner'
+import HomeProfile from './Profile/HomeProfile'
 
 const Homepage = () => {
   useTitle('Portfolio')
   return (
-    <>
-      <div className='max-w-[1230px] mx-auto px-3'>
-        <TopBanner />
-      </div>
+    <div>
+      <HomeProfile/>
+      <TopBanner />
       <AboutMe />
-      <div className='max-w-[1230px] mx-auto px-3'>
-        <Services />
-        <MySkills />
-        <Projects />
-        <ContactMe />
-      </div>
-    </>
+      <Services />
+      <MySkills />
+      <Projects />
+      <ContactMe />
+    </div >
   )
 }
 

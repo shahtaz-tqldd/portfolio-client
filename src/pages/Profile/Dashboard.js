@@ -1,8 +1,7 @@
 import React from 'react'
-
 import useTitle from '../../hooks/useTitle'
 
-const Profile = () => {
+const Dashboard = () => {
     useTitle('Dashboard')
     
     return (
@@ -12,4 +11,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default Dashboard

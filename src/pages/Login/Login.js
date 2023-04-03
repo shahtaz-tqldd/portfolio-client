@@ -24,18 +24,17 @@ const Login = () => {
 
     }
     return (
-        <section className='flex justify-center'>
-            <div className='bg-neutral rounded-lg mt-6 md:mt-24 lg:mt-32 p-6 border-t-4 border-success'>
-                <h2 className='text-2xl font-bold mb-5 w-[320px]'>Admin Login</h2>
-
+        <section className='w-full h-[100vh] flex justify-center items-center'>
+            <div className='bg-[#2C3333] max-w-[450px] h-[370px] rounded-lg p-10 border-t-4 border-primary glown'>
+                <h2 className='text-3xl mb-8'>Admin Login</h2>
                 <form onSubmit={handleLogin}>
                     <span className='flex items-center mb-2'><MdEmail className='text-2xl mr-2' />
-                        <input type="email" name="email" placeholder="Your Email" className="input input-bordered w-full rounded-full focus:outline-none focus:border-primary" />
+                        <input type="email" name="email" placeholder="Email" className="input input-bordered w-full rounded-full focus:outline-none focus:border-primary" />
                     </span>
                     <span className='flex items-center mb-3'><MdLock className='text-2xl mr-2' />
                         <input type="password" name="password" placeholder="Password" className="input input-bordered w-full rounded-full focus:outline-none focus:border-primary" />
                     </span>
-                    <input type="submit" value="Login" className="btn btn-success w-full rounded-md mt-4 mb-3" />
+                    <input type="submit" value="Login" className="btn btn-primary w-full rounded-md mt-10" />
                 </form>
             </div>
         </section>

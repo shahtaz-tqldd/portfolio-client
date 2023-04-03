@@ -7,12 +7,13 @@ const { default: Main } = require("../layouts/Main");
 const Home = lazy(() => import("../pages/Homepage/Homepage"));
 const Blogs = lazy(() => import("../pages/Blogs/Blogs"));
 const BlogDetails = lazy(() => import("../pages/Blogs/BlogDetails"));
-const ContactMe = lazy(() => import("../pages/ContactMe/ContactMe"));
 const Login = lazy(() => import("../pages/Login/Login"));
+const Projects = lazy(() => import("../pages/Projects/ProjectPage.js"));
+const Resource = lazy(() => import("../pages/ResourcePage/Resources.js"));
 
-const Profile = lazy(() => import("../pages/Profile/Profile"));
+const Dashboard = lazy(() => import("../pages/Profile/Dashboard"));
 const BlogDashboard = lazy(() => import("../pages/Profile/blogs/BlogDashboard"));
-const ProfileLayout = lazy(() => import("../pages/Profile/ProfileLayout"));
+const DashboardLayout = lazy(() => import("../layouts/DashboardLayout"));
 const ProjectDashboard = lazy(() => import("../pages/Profile/projects/ProjectDashboard"));
 const SkillDashboard = lazy(() => import("../pages/Profile/skills/SkillDashboard"));
 
@@ -26,51 +27,55 @@ export const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: '/blogs',
-                element: <Blogs/>
+                element: <Blogs />
+            },
+            {
+                path: '/projects',
+                element: <Projects />
+            },
+            {
+                path: '/resource',
+                element: <Resource />
             },
             {
                 path: '/blogs/:title',
                 element: <BlogDetails />,
-                loader: async({params})=> await fetch(`https://portfolio-backend-sepia-seven.vercel.app/blogs/${params.title}`)
-            },
-            {
-                path: '/contact',
-                element: <ContactMe/>
-            },
-            {
-                path: '/login',
-                element: <Login/>
+                loader: async ({ params }) => await fetch(`https://portfolio-backend-sepia-seven.vercel.app/blogs/${params.title}`)
             },
             {
                 path: '/dashboard',
-                element: <PrivateRoute><ProfileLayout /></PrivateRoute>,
+                element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
                 children: [
                     {
                         path: '/dashboard',
-                        element: <Profile/>
+                        element: <Dashboard />
                     },
                     {
                         path: '/dashboard/blogs',
-                        element: <BlogDashboard/>
+                        element: <BlogDashboard />
                     },
                     {
                         path: '/dashboard/projects',
-                        element: <ProjectDashboard/>
+                        element: <ProjectDashboard />
                     },
                     {
                         path: '/dashboard/skills',
-                        element: <SkillDashboard/>
+                        element: <SkillDashboard />
                     },
                 ]
             },
-            {
-                path: '*',
-                element: <Errorpage/>
-            }
         ]
+    },
+    {
+        path: '/login',
+        element: <Login />
+    },
+    {
+        path: '*',
+        element: <Errorpage />
     },
 ])

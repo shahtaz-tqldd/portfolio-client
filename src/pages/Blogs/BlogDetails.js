@@ -1,16 +1,17 @@
 import React, { useContext } from 'react'
 import { Link, useLoaderData, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthProvider'
-import BlogEditModal from '../Profile/components/BlogEditModal'
-import { BsArrowLeftCircleFill } from 'react-icons/bs'
+import BlogEditModal from '../../components/Modals/BlogEditModal'
 import { toast } from 'react-hot-toast'
-import DeleteBlogModal from '../Profile/components/DeleteBlogModal'
+import DeleteBlogModal from '../../components/Modals/DeleteBlogModal'
+import useTitle from '../../hooks/useTitle'
 
 const BlogDetails = () => {
     const data = useLoaderData()
     const navigate = useNavigate()
     const { user } = useContext(AuthContext)
     const { title, body, img, date, tags, _id } = data
+    useTitle(title)
     const handleDelete = () => {
         fetch(`https://portfolio-backend-sepia-seven.vercel.app/blogs/${_id}`, {
             method: 'DELETE'
@@ -22,23 +23,41 @@ const BlogDetails = () => {
             })
     }
     return (
-        <section className='lg:w-[60%] mx-auto mt-8'>
-            <Link to='/blogs' className='text-info text-4xl -ml-20 fixed'><BsArrowLeftCircleFill /></Link>
-            <img src={img} alt="" className='h-[350px] w-full object-cover' />
-            <h2 className='text-4xl font-bold mb-2 mt-6'>{title}</h2>
-            <div className='mt-1 flex gap-2 text-xs text-success mb-2'>
+        <section className='mt-16 mb-20 relative'>
+            <Link to='/blogs' className='border-[1px] border-accent hover:border-primary rounded-full icon px-3 py-2 fixed right-10 top-32'>
+                <lord-icon
+                    src="https://cdn.lordicon.com/zmkotitn.json"
+                    trigger="hover"
+                    class="current-color"
+                    style={{ width: "25px", height: "25px", paddingTop: "4px", transform: "scaleX(-1)" }}>
+                </lord-icon>
+            </Link>
+            <div className='flex mb-3'>
+                <div className="border-[1px] border-accent py-2 px-5 text-xs flex items-center gap-2 rounded-full">
+                    <lord-icon
+                        target="div"
+                        src="https://cdn.lordicon.com/qznlhdss.json"
+                        trigger="hover"
+                        colors="primary:#fff"
+                        style={{ width: "16px", height: "16px" }}>
+                    </lord-icon>
+                    {date}
+                </div>
+            </div>
+            <img src={img} alt="" className='h-[380px] w-full object-cover rounded-3xl' />
+            <h2 className='text-5xl font-bold text-primary mb-2 mt-6'>{title}</h2>
+            <div className='mt-3 flex gap-5 text-sm text-accent'>
                 {
-                    tags?.map((tag, i) => <span id={i}>{tag}&nbsp;&nbsp;{(i + 1) < tags.length && '|'}</span>)
+                    tags?.map((tag, index) => <span key={index}>{tag}</span>)
                 }
             </div>
-            <p className='text-sm mb-5'>Posted on : {date}</p>
-            <p className='text-justify text-[16px]' dangerouslySetInnerHTML={{ __html: body }} />
+            <p className='text-justify text-accent text-[17px] mt-6' dangerouslySetInnerHTML={{ __html: body }} />
 
 
             {user &&
-                <div className='mt-12 flex gap-6'>
-                    <label htmlFor='blog-edit-modal' className="btn btn-info text-white">Edit Blog</label>
-                    <label htmlFor='delete-blog-modal' className='btn btn-error text-white'>Delete this Blog</label>
+                <div className='mt-12 flex justify-end gap-4'>
+                    <label htmlFor='blog-edit-modal' className="btn btn-sm rounded-full normal-case btn-primary text-white">Edit Blog</label>
+                    <label htmlFor='delete-blog-modal' className='btn btn-sm rounded-full btn-error normal-case text-white'>Delete Blog</label>
                 </div>
             }
 
@@ -46,7 +65,8 @@ const BlogDetails = () => {
             <DeleteBlogModal
                 handleDeleteBlog={handleDelete}
                 type={'blog'}
-                title={title} />
+                title={title} 
+            />
         </section>
     )
 }

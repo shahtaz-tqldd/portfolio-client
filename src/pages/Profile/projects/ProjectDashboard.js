@@ -2,8 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
 import { HiExternalLink, HiServer } from 'react-icons/hi'
 import { GrGithub } from 'react-icons/gr'
-import ProjectAddModal from '../components/ProjectAddModal'
-import DeleteBlogModal from '../components/DeleteBlogModal'
+import ProjectAddModal from '../../../components/Modals/ProjectAddModal'
+import DeleteBlogModal from '../../../components/Modals/DeleteBlogModal'
 import { toast } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import useTitle from '../../../hooks/useTitle'
@@ -34,7 +34,7 @@ const ProjectDashboard = () => {
         <div className='w-full'>
             <div className='flex items-center justify-between'>
                 <h1 className='text-4xl font-bold uppercase'>Projects</h1>
-                <label htmlFor='project-modal' className='btn btn-sm normal-case rounded-sm text-white btn-success'>Add Project + </label>
+                <label htmlFor='project-modal' className='btn normal-case btn-primary'>Add Project + </label>
             </div>
 
             {/* project table */}

@@ -1,17 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins:wght@400;700&display=swap');
 body {
   margin: 0;
-  /* font-family: 'Montserrat', sans-serif; */
-  font-family: 'Poppins', sans-serif;
-  background-color: #f5f3ef;
-}
-main{
-  padding: 60px 0;
-  min-height: 80vh;
-}
-h6{
-  font-family: 'Righteous', cursive;
+  font-family: 'Inter', sans-serif;
+  background-color: #1f1f1f;
 }

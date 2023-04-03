@@ -1,45 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import profile from '../../../assets/images/shahtaz.jpg'
-import TextTransition, { presets } from "react-text-transition";
-import { Link } from 'react-router-dom';
-import SocialLinks2 from '../../../components/SocialLinks2';
+import React from 'react'
+import SectionTitle from '../../../components/Typography/SectionTitle';
 
 const TopBanner = () => {
-    const [index, setIndex] = useState(0);
-    const texts = [
-        "MERN Stack",
-        "Frontend",
-        "React JS"
-    ];
-    useEffect(() => {
-        const intervalId = setInterval(() =>
-            setIndex(index => index + 1),
-            3000
-        );
-        return () => clearTimeout(intervalId);
-    }, []);
+    const props = { img: "https://cdn.lordicon.com/osuxyevn.json", text: "Introduction" }
     return (
-        <div className="w-full flex flex-col md:flex-row-reverse items-start lg:items-center md:items-center lg:flex-row-reverse justify-between lg:pt-16 lg:pb-24">
-            <figure className='lg:w-1/2 md:w-1/2 flex justify-center items-center mb-8' data-aos="fade-left"><img src={profile} alt='banner' className="lg:h-[450px] md:h-[400px] h-[350px] object-cover rounded-xl" /></figure>
-            <div className='lg:w-1/2 md:w-1/2 flex lg:flex-row md:flex-row flex-col-reverse justify-start lg:items-center gap-10' data-aos="fade-right">
-                <div className='text-2xl lg:flex md:flex gap-6 lg:flex-col md:flex-col hidden'>
-                    <SocialLinks2 />
+        <section id="home" className='mb-32'>
+            <SectionTitle props={props} />
+            <h1 className='lg:text-[65px] lg:leading-[75px] md:text-[50px] md:leading-[60px] text-[28px] leading-[40px]'>
+                Hey! I'm <span className='text-primary'>Shahtaz</span>,<br /> Full-Stack Web Developer</h1>
+            <p className='mt-6 lg:text-2xl md:text-2xl text-md'>
+                I am a MERN Stack developer who loves to create dynamic and responsive web applications.
+            </p>
+            <div className='flex lg:flex-row md:flex-row flex-col justify-between lg:items-end md:items-end items-center'>
+                <div className='flex lg:gap-28 md:gap-24 gap-20 lg:mt-20 md:mt-20 mt-12'>
+                    <div>
+                        <span className='text-primary lg:text-[70px] md:text-[60px] text-[50px] leading-[100px]'>2+</span>
+                        <p className='uppercase text-accent -mt-2'>Years of<br /> experience</p>
+                    </div>
+                    <div>
+                        <span className='text-primary lg:text-[70px] md:text-[60px] text-[50px] leading-[100px]'>20+</span>
+                        <p className='uppercase text-accent -mt-2'>Projects<br /> Completed</p>
+                    </div>
                 </div>
-                <div className='w-min-full'>
-                    <p className="lg:text-2xl mb-2">Hi! This is Shahtaz Rahman</p>
-                    <h1 className="lg:text-5xl md:text-[30px] text-3xl font-bold flex">I am a&nbsp;
-                        <TextTransition className="text-success" springConfig={presets.wobbly}>
-                            {texts[index % texts.length]}
-                        </TextTransition>
-                    </h1>
-                    <h1 className="lg:text-5xl md:text-[30px] text-3xl font-bold flex content-center">web Developer</h1>
-                    <a href='https://drive.google.com/file/d/1lV9dIwZU1Ede97Fao-GY1s3EjLPyjvO-/view?usp=share_link' target="_blank" rel="noreferrer">
-                        <button className="btn btn-primary btn-sm mt-8 rounded normal-case text-white">Hire Me</button>
-                    </a>
-                    <Link to='/contact'><button className="btn btn-primary btn-sm mt-8 rounded normal-case btn-outline ml-4">Contact Me</button></Link>
-                </div>
+                <a href="#projects" className='flex hover:text-primary items-center gap-2 text-2xl icon cursor-pointer lg:mt-0 md:mt-0 mt-14'>
+                    My Projcets
+                    <lord-icon
+                        target="div"
+                        src="https://cdn.lordicon.com/rxufjlal.json"
+                        trigger="hover"
+                        class="current-color"
+                        style={{ width: "40px", height: "40px" }}>
+                    </lord-icon>
+                </a>
             </div>
-        </div>
+        </section >
     )
 }
 
