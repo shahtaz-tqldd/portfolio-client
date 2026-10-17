@@ -1,0 +1,308 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------- design tokens ---------------------------- */
+
+:root {
+  /* dark-first palette: deep blue-black, teal/cyan accents, amber highlights */
+  --bg: #05070c;
+  --bg-2: #090d15;
+  --surface: rgba(255, 255, 255, 0.028);
+  --surface-2: rgba(255, 255, 255, 0.055);
+  --line: rgba(148, 163, 184, 0.14);
+  --line-strong: rgba(148, 163, 184, 0.32);
+  --fg: #e7ecf4;
+  --muted: #98a2b3;
+  --accent: #17ce78;
+  --accent-2: #67f96e;
+  --warm: #f5a524;
+  --glow: rgba(45, 212, 191, 0.32);
+  --grid: rgba(148, 163, 184, 0.055);
+  --code-bg: rgba(3, 5, 9, 0.72);
+  --shadow-card: 0 24px 48px -24px rgba(0, 0, 0, 0.65);
+
+  /* diagram node palette by kind */
+  --k-client: #38bdf8;
+  --k-widget: #38bdf8;
+  --k-api: #2dd4bf;
+  --k-ws: #22d3ee;
+  --k-queue: #fbbf24;
+  --k-worker: #fb923c;
+  --k-cache: #facc15;
+  --k-db: #34d399;
+  --k-vector: #a3e635;
+  --k-storage: #94a3b8;
+  --k-agent: #5eead4;
+  --k-llm: #f5a524;
+  --k-external: #cbd5e1;
+  --k-service: #22d3ee;
+  --k-table: #2dd4bf;
+}
+
+html.light {
+  --bg: #f5f6f8;
+  --bg-2: #edeef2;
+  --surface: rgba(15, 23, 42, 0.032);
+  --surface-2: rgba(15, 23, 42, 0.06);
+  --line: rgba(15, 23, 42, 0.13);
+  --line-strong: rgba(15, 23, 42, 0.3);
+  --fg: #131a26;
+  --muted: #59637a;
+  --accent: #0d9488;
+  --accent-2: #0e7490;
+  --warm: #b45309;
+  --glow: rgba(13, 148, 136, 0.22);
+  --grid: rgba(15, 23, 42, 0.05);
+  --code-bg: rgba(10, 14, 22, 0.96); /* code stays dark in light mode */
+  --shadow-card: 0 20px 40px -24px rgba(15, 23, 42, 0.25);
+
+  --k-client: #0284c7;
+  --k-widget: #0284c7;
+  --k-api: #0d9488;
+  --k-ws: #0891b2;
+  --k-queue: #b45309;
+  --k-worker: #c2410c;
+  --k-cache: #a16207;
+  --k-db: #059669;
+  --k-vector: #4d7c0f;
+  --k-storage: #64748b;
+  --k-agent: #0f766e;
+  --k-llm: #b45309;
+  --k-external: #475569;
+  --k-service: #0891b2;
+  --k-table: #0d9488;
+}
+
+/* ---------------------------------- base ---------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+html.lenis-active {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-feature-settings: "ss01", "cv05";
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 8px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* hide native cursor only when the custom cursor is active (fine pointers, not inputs) */
+@media (pointer: fine) {
+  html.has-custom-cursor body,
+  html.has-custom-cursor a,
+  html.has-custom-cursor button,
+  html.has-custom-cursor [role="button"] {
+    cursor: none;
+  }
+}
+
+/* ------------------------------- components ------------------------------- */
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-surface px-3 py-1 font-mono text-[11px] tracking-wide text-muted transition-colors duration-300;
+  }
+
+  .btn {
+    @apply relative inline-flex items-center gap-2 rounded-full px-6 py-3 font-mono text-xs tracking-wider uppercase transition-colors duration-300;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after,
+  .link-underline:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-surface transition-colors duration-500;
+  }
+
+  .kicker {
+    @apply font-mono text-[11px] tracking-[0.25em] uppercase text-accent;
+  }
+
+  .outline-text {
+    -webkit-text-stroke: 1px var(--line-strong);
+    color: transparent;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------ code tokens ------------------------------- */
+
+.tok-c { color: #7c8798; font-style: italic; }
+.tok-s { color: #9ecbff; }
+.tok-k { color: #5eead4; }
+.tok-n { color: #f5a524; }
+
+/* -------------------------------- diagrams -------------------------------- */
+
+.dg-edge {
+  stroke: var(--line-strong);
+  fill: none;
+  stroke-width: 1.4;
+  transition: opacity 0.35s ease, stroke-width 0.35s ease, stroke 0.35s ease;
+}
+.dg-edge.async { stroke: var(--k-queue); }
+.dg-edge.data { stroke: var(--k-db); }
+.dg-edge.flow {
+  stroke-dasharray: 5 7;
+  animation: dash-flow 1.15s linear infinite;
+}
+.dg-edge.hot {
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  animation-duration: 0.65s;
+}
+.dg-edge-label {
+  font: 500 10px var(--font-mono), monospace;
+  fill: var(--muted);
+  paint-order: stroke;
+  stroke: var(--bg);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+.dg-node {
+  cursor: pointer;
+  transition: opacity 0.35s ease;
+}
+.dg-node-box {
+  fill: var(--bg-2);
+  transition: filter 0.35s ease, stroke-width 0.35s ease;
+}
+.dg-node.hot .dg-node-box {
+  filter: drop-shadow(0 0 10px var(--glow));
+  stroke-width: 2;
+}
+.dg-node-label {
+  font: 600 12.5px var(--font-display), sans-serif;
+  fill: var(--fg);
+}
+.dg-node-sub {
+  font: 400 10px var(--font-mono), monospace;
+  fill: var(--muted);
+}
+.dg-group-box {
+  fill: var(--surface);
+  stroke: var(--line);
+  stroke-dasharray: 3 6;
+  rx: 16;
+}
+.dg-group-label {
+  font: 500 10px var(--font-mono), monospace;
+  fill: var(--muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.dg-table-head {
+  font: 700 12px var(--font-mono), monospace;
+  fill: var(--fg);
+}
+.dg-table-row {
+  font: 400 10.5px var(--font-mono), monospace;
+  fill: var(--muted);
+}
+
+.dg-tool-btn {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  background: var(--surface);
+  transition: border-color 0.3s, color 0.3s;
+}
+.dg-tool-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+:fullscreen .dg-stage {
+  height: 100vh;
+}
+
+/* ------------------------- hero: node-assembly name ----------------------- */
+
+.hero-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 9999px;
+  background: var(--accent);
+  box-shadow:
+    0 0 14px var(--glow),
+    0 0 4px var(--glow);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* ------------------------------ reduced motion ---------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.15s !important;
+  }
+}

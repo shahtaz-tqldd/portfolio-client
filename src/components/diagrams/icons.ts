@@ -1,0 +1,75 @@
+"use client";
+
+import {
+  Bot,
+  Box,
+  Cpu,
+  Database,
+  Globe,
+  HardDrive,
+  Layers,
+  MessageSquare,
+  Monitor,
+  Radio,
+  Server,
+  Sparkles,
+  Table,
+  Workflow,
+  Zap,
+  type LucideIcon,
+} from "lucide-react";
+import type { NodeKind } from "@/lib/types";
+
+export const kindIcons: Record<NodeKind, LucideIcon> = {
+  client: Monitor,
+  widget: MessageSquare,
+  api: Server,
+  ws: Radio,
+  queue: Layers,
+  worker: Cpu,
+  cache: Zap,
+  db: Database,
+  vector: Box,
+  storage: HardDrive,
+  agent: Bot,
+  llm: Sparkles,
+  external: Globe,
+  service: Workflow,
+  table: Table,
+};
+
+export const kindColorVar: Record<NodeKind, string> = {
+  client: "var(--k-client)",
+  widget: "var(--k-widget)",
+  api: "var(--k-api)",
+  ws: "var(--k-ws)",
+  queue: "var(--k-queue)",
+  worker: "var(--k-worker)",
+  cache: "var(--k-cache)",
+  db: "var(--k-db)",
+  vector: "var(--k-vector)",
+  storage: "var(--k-storage)",
+  agent: "var(--k-agent)",
+  llm: "var(--k-llm)",
+  external: "var(--k-external)",
+  service: "var(--k-service)",
+  table: "var(--k-table)",
+};
+
+export const kindLabels: Record<NodeKind, string> = {
+  client: "Client",
+  widget: "Widget",
+  api: "API",
+  ws: "Realtime",
+  queue: "Queue",
+  worker: "Worker",
+  cache: "Cache",
+  db: "Database",
+  vector: "Vector store",
+  storage: "Storage",
+  agent: "Agent",
+  llm: "LLM",
+  external: "External",
+  service: "Service",
+  table: "Table",
+};
