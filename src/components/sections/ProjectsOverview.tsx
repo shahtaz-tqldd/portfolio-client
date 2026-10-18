@@ -50,7 +50,7 @@ export function ProjectCard({
         {/* preview */}
         <div className="relative overflow-hidden border-b border-line p-5">
           <div className="transition-transform duration-700 ease-outexpo group-hover:scale-[1.03]">
-            <ProjectPreview seed={p.slug} accent={p.accent} label={p.slug} />
+            <ProjectPreview seed={p.slug} accent={p.accent} label={p.title} logo={p.logo} />
           </div>
         </div>
 

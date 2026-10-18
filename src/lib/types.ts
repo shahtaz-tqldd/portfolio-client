@@ -163,6 +163,7 @@ export interface TechLayer {
 export interface Project {
   slug: string;
   title: string;
+  logo: string;
   tagline: string;
   summary: string;
   role: string;

@@ -82,7 +82,7 @@ export function Contact() {
           {/* ───────── left: pitch + channels ───────── */}
           <div>
             <SectionHeading
-              index="05"
+          index="06"
               kicker="Contact"
               title="Let's build something reliable."
               lead="Need a backend, an AI feature, or a whole product shipped? Tell me what you're working on, or ask my assistant right now."
@@ -166,7 +166,7 @@ export function Contact() {
             <form onSubmit={submit} className="card p-6 sm:p-8" aria-label="Contact form">
               <h3 className="font-display text-xl font-semibold text-fg">Send me a message</h3>
               <p className="mt-1.5 font-mono text-[11px] text-muted">
-                Usually replies within 24h · opens your email app, nothing is stored
+                Usually replies within 24h, keep eyes on your email
               </p>
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
@@ -178,7 +178,7 @@ export function Contact() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className={inputClass}
-                    placeholder="Ada Lovelace"
+                    placeholder="Your Name"
                   />
                 </label>
                 <label className="block">
@@ -190,7 +190,7 @@ export function Contact() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className={inputClass}
-                    placeholder="ada@analytical.engine"
+                    placeholder="abc@email.com"
                   />
                 </label>
               </div>
@@ -203,7 +203,7 @@ export function Contact() {
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className={`${inputClass} resize-none`}
-                  placeholder="We need a backend that doesn't fall over when…"
+                  placeholder="Write your concerns, project requirements or any queries directly to my mailbox"
                 />
               </label>
 

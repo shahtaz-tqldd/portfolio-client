@@ -43,7 +43,7 @@ export function CaseStudy({
     <article>
       <HeroBanner p={p} />
 
-      <div className="container-x grid gap-12 pb-24 lg:grid-cols-[220px_1fr] xl:grid-cols-[240px_1fr]">
+      <div className="pt-12 container-x grid gap-12 pb-24 lg:grid-cols-[220px_1fr] xl:grid-cols-[240px_1fr]">
         <ChapterNav chapters={chapters} accent={p.accent} />
         <div className="min-w-0 space-y-28">
           <OverviewChapter p={p} />
@@ -429,7 +429,7 @@ function ChallengesChapter({ p }: { p: Project }) {
         title="Where it got hard"
         headingId="h-challenges"
       />
-      <div className="space-y-8">
+      <div className="space-y-8 mt-8">
         {p.challenges.map((c, i) => (
           <ChallengeCard key={c.title} c={c} index={i} />
         ))}

@@ -7,13 +7,14 @@ import type { Project } from "@/lib/types";
 export const tourtoise: Project = {
   slug: "tourtoise",
   title: "Tourtoise",
+  logo: "/tourtoise-logo.png",
   tagline: "AI-powered travel planning platform",
   summary:
     "A multi-agent travel platform for destination discovery, itinerary generation and personalized trip planning: RAG-based destination Q&A over structured travel data, with agent workflows for preference collection, day-by-day planning, budgeting and contextual guidance.",
   role: "Backend & agent systems engineer",
   timeline: "2024",
   teamSize: "Solo project",
-  accent: "#f59e0b",
+  accent: "#85fdbb",
   techChips: ["Python", "Django", "Google ADK", "Gemini", "PostgreSQL", "pgvector", "Docker"],
   headlineMetric: { label: "specialized agents in the planning pipeline", value: 4, suffix: "" },
   problem: {

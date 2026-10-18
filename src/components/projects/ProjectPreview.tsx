@@ -1,12 +1,23 @@
 "use client";
 
+import Image from "next/image";
 import { hashCode, mulberry32 } from "@/lib/utils";
 
 /**
  * Deterministic placeholder "screenshot": a themed mini node-graph in a browser frame.
  * Replace by giving projects real media — this keeps cards lively without fake images.
  */
-export function ProjectPreview({ seed, accent, label }: { seed: string; accent: string; label: string }) {
+export function ProjectPreview({
+  seed,
+  accent,
+  label,
+  logo,
+}: {
+  seed: string;
+  accent: string;
+  label: string;
+  logo: string;
+}) {
   const rand = mulberry32(hashCode(seed));
   const w = 560;
   const h = 340;
@@ -26,8 +37,8 @@ export function ProjectPreview({ seed, accent, label }: { seed: string; accent: 
   }
 
   return (
-    <div className="overflow-hidden rounded-xl border border-line bg-bg2 shadow-[var(--shadow-card)]">
-      <svg viewBox={`0 0 ${w} ${h}`} className="block w-full" role="img" aria-label={`${label} system preview`}>
+    <div className="relative overflow-hidden rounded-xl border border-line bg-bg2 shadow-[var(--shadow-card)]">
+      <svg viewBox={`0 0 ${w} ${h}`} className="block w-full opacity-60" role="img" aria-label={`${label} system preview`}>
         <defs>
           <radialGradient id={`pg-${seed}`} cx="30%" cy="20%" r="90%">
             <stop offset="0%" stopColor={accent} stopOpacity="0.14" />
@@ -58,9 +69,20 @@ export function ProjectPreview({ seed, accent, label }: { seed: string; accent: 
           />
         ))}
         <text x={24} y={h - 20} className="dg-node-sub" fontSize={11}>
-          {label} — illustrative topology
+          {label}
         </text>
       </svg>
+      <div className="absolute inset-0 grid place-items-center">
+        <div className="grid size-24 place-items-center rounded-2xl p-5 bg-slate-500/10 dark:bg-white/5 transition-transform duration-500 group-hover:scale-105 sm:size-28">
+          <Image
+            src={logo}
+            alt={`${label} logo`}
+            width={180}
+            height={120}
+            className="max-h-full max-w-full object-contain"
+          />
+        </div>
+      </div>
     </div>
   );
 }

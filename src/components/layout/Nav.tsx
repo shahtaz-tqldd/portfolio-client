@@ -77,19 +77,10 @@ export function Nav() {
       <nav className="container-x flex h-16 items-center justify-between" aria-label="Primary">
         <Link
           href="/"
-          className="group flex items-center gap-2.5 font-mono text-sm tracking-wider text-fg"
+          className="group flex items-center font-mono text-sm tracking-wider text-fg"
           aria-label="Home"
         >
-          <span className="relative grid size-7 place-items-center" aria-hidden>
-            <span className="absolute size-1.5 rounded-full bg-accent transition-transform duration-500 group-hover:scale-150" />
-            <svg viewBox="0 0 28 28" className="absolute inset-0 text-linestrong" fill="none">
-              <circle cx="6" cy="6" r="2" className="fill-current" />
-              <circle cx="22" cy="8" r="2" className="fill-current" />
-              <circle cx="14" cy="22" r="2" className="fill-current" />
-              <path d="M7.5 7.5 20.5 8.5M7.8 7.8 13 20.5M21.3 9.8 15.2 20.6" stroke="currentColor" strokeWidth="1" />
-            </svg>
-          </span>
-          shahtaz<span className="text-accent">.dev</span>
+          _shahtaz
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">

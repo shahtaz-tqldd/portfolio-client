@@ -7,13 +7,14 @@ import type { Project } from "@/lib/types";
 export const argon: Project = {
   slug: "argon",
   title: "Argon Chatbot",
+  logo: "/argon-logo.png",
   tagline: "Multi-tenant agentic AI chatbot SaaS",
   summary:
     "A multi-tenant agentic chatbot SaaS with workspace isolation and configurable chatbots: RAG over PostgreSQL + pgvector, business workflows like lead scoring, appointment booking and human handoff, wired into external communication channels.",
   role: "Backend & AI systems engineer",
   timeline: "2024 — Present",
   teamSize: "Small team (2–4 engineers)",
-  accent: "#2dd4bf",
+  accent: "#7fcafb",
   techChips: ["Python", "Django", "Google ADK", "PostgreSQL", "pgvector", "Celery", "Redis", "Channels", "Stripe", "R2"],
   headlineMetric: { label: "external channels unified into one agentic pipeline", value: 4, suffix: "" },
   problem: {
