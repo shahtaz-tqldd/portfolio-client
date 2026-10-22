@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useRef } from "react";
-import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDown, Download } from "lucide-react";
+import { ArrowDown, Download, Layers2 } from "lucide-react";
 import { site } from "@/lib/data/site";
 import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { MagneticButton } from "@/components/motion/MagneticButton";
@@ -58,7 +63,17 @@ export function Hero() {
 
     // hide animated targets pre-paint so there's no flash while fonts load
     ctx = gsap.context(() => {
-      gsap.set([".hero-char", ".hero-dot", "[data-hero-role]", "[data-hero-tagline]", "[data-hero-cta]", "[data-hero-meta]"], { opacity: 0 });
+      gsap.set(
+        [
+          ".hero-char",
+          ".hero-dot",
+          "[data-hero-role]",
+          "[data-hero-tagline]",
+          "[data-hero-cta]",
+          "[data-hero-meta]",
+        ],
+        { opacity: 0 },
+      );
     }, sectionEl);
 
     const build = () => {
@@ -76,15 +91,26 @@ export function Hero() {
         const rand = mulberry32(0x5aa17);
         const centers = chars.map((ch) => {
           const r = ch.getBoundingClientRect();
-          return { x: r.left - box.left + r.width / 2, y: r.top - box.top + r.height / 2 };
+          return {
+            x: r.left - box.left + r.width / 2,
+            y: r.top - box.top + r.height / 2,
+          };
         });
         dots.forEach((d, i) => {
           d.style.left = `${centers[i].x}px`;
           d.style.top = `${centers[i].y}px`;
         });
 
-        const tl = gsap.timeline({ defaults: { ease: "power4.out" }, delay: 0.2 });
-        tl.fromTo("[data-hero-kicker]", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
+        const tl = gsap.timeline({
+          defaults: { ease: "power4.out" },
+          delay: 0.2,
+        });
+        tl.fromTo(
+          "[data-hero-kicker]",
+          { opacity: 0, y: 14 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          0,
+        );
 
         const spread = Math.min(460, window.innerWidth * 0.42);
         chars.forEach((ch, i) => {
@@ -97,24 +123,52 @@ export function Hero() {
           tl.fromTo(
             dot,
             { x: dx, y: dy, scale: 1.8, opacity: 0 },
-            { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "power3.inOut" },
+            {
+              x: 0,
+              y: 0,
+              scale: 1,
+              opacity: 1,
+              duration: 0.5,
+              ease: "power3.inOut",
+            },
             t,
           );
-          tl.to(dot, { opacity: 0, scale: 0.3, duration: 0.22, ease: "power2.in" }, t + 0.46);
+          tl.to(
+            dot,
+            { opacity: 0, scale: 0.3, duration: 0.22, ease: "power2.in" },
+            t + 0.46,
+          );
 
           // glyph materializes from the arriving node
           tl.fromTo(
             ch,
             { opacity: 0, scale: 1.45, y: 6, filter: "blur(7px)" },
-            { opacity: 1, scale: 1, y: 0, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.8)" },
+            {
+              opacity: 1,
+              scale: 1,
+              y: 0,
+              filter: "blur(0px)",
+              duration: 0.5,
+              ease: "back.out(1.8)",
+            },
             t + 0.44,
           );
         });
 
         // supporting cast follows the assembly
         const settle = 0.32 + chars.length * 0.042 + 0.4;
-        tl.fromTo("[data-hero-role]", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.8 }, settle + 0.1);
-        tl.fromTo("[data-hero-tagline]", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.65 }, settle + 0.35);
+        tl.fromTo(
+          "[data-hero-role]",
+          { clipPath: "inset(0 100% 0 0)" },
+          { clipPath: "inset(0 0% 0 0)", duration: 0.8 },
+          settle + 0.1,
+        );
+        tl.fromTo(
+          "[data-hero-tagline]",
+          { opacity: 0, y: 18 },
+          { opacity: 1, y: 0, duration: 0.65 },
+          settle + 0.35,
+        );
         tl.fromTo(
           "[data-hero-cta]",
           { opacity: 0, y: 22, scale: 0.96 },
@@ -151,12 +205,22 @@ export function Hero() {
         yPercent: -12,
         opacity: 0.25,
         ease: "none",
-        scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 0.6 },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
       });
       gsap.to("[data-hero-ghost]", {
         xPercent: 12,
         ease: "none",
-        scrollTrigger: { trigger: sectionRef.current, start: "top top", end: "bottom top", scrub: 0.6 },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
       });
     }, sectionRef);
     return () => ctx.revert();
@@ -165,7 +229,11 @@ export function Hero() {
   let letterIndex = -1;
 
   return (
-    <section ref={sectionRef} id="home" className="relative flex min-h-svh flex-col overflow-hidden pt-16">
+    <section
+      ref={sectionRef}
+      id="home"
+      className="relative flex min-h-svh flex-col overflow-hidden pt-16"
+    >
       <SectionBackground from="left" tint="teal" />
 
       {/* cursor-reactive glow */}
@@ -189,7 +257,10 @@ export function Hero() {
       <div className="container-x flex flex-1 items-center">
         <div ref={contentRef} className="max-w-3xl py-24">
           <p data-hero-kicker className="kicker flex items-center gap-3">
-            <span className="inline-block size-1.5 rounded-full bg-accent animate-blink" aria-hidden />
+            <span
+              className="inline-block size-1.5 rounded-full bg-accent animate-blink"
+              aria-hidden
+            />
             Software Engineer — {site.location}
           </p>
 
@@ -199,16 +270,25 @@ export function Hero() {
           >
             <span ref={nameRef} className="relative inline-block">
               {WORDS.map((word, wi) => (
-                <span key={wi} className="inline-block whitespace-nowrap" aria-hidden>
+                <span
+                  key={wi}
+                  className="inline-block whitespace-nowrap"
+                  aria-hidden
+                >
                   {Array.from(word).map((ch) => {
                     letterIndex += 1;
                     return (
-                      <span key={letterIndex} className="hero-char inline-block will-change-transform">
+                      <span
+                        key={letterIndex}
+                        className="hero-char inline-block will-change-transform"
+                      >
                         {ch}
                       </span>
                     );
                   })}
-                  {wi < WORDS.length - 1 ? <span className="inline-block w-[0.26em]" /> : null}
+                  {wi < WORDS.length - 1 ? (
+                    <span className="inline-block w-[0.26em]" />
+                  ) : null}
                 </span>
               ))}
 
@@ -219,13 +299,19 @@ export function Hero() {
             </span>
           </h1>
 
-          <p data-hero-role className="mt-6 border-l-2 border-accent/70 font-mono text-sm tracking-wide text-accent sm:text-base">
-            Backend · System Architecture · Database Design · AI Systems
+          <p
+            data-hero-role
+            className="mt-6 font-mono text-sm tracking-wide text-accent sm:text-base"
+          >
+            System Architecture · Backend · AI Systems · User Interface
           </p>
 
-          <p data-hero-tagline className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
-            {site.valueStatement} Multi-tenant SaaS, distributed workflows and RAG pipelines —
-            designed like an engineer, not a demo.
+          <p
+            data-hero-tagline
+            className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl"
+          >
+            Full-stack Engineer building multi-tenant SaaS, agentic AI systems,
+            and RAG pipelines. From the requirements analysis to the product design.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -235,20 +321,26 @@ export function Hero() {
               </MagneticButton>
             </span>
             <span data-hero-cta>
-              <MagneticButton href={site.resume} variant="ghost" download>
-                <Download className="size-3.5" /> Résumé
+              <MagneticButton href={site.resumePage} variant="ghost">
+                <Layers2 className="size-3.5" /> Resume
               </MagneticButton>
             </span>
           </div>
 
-          <ul className="mt-14 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.16em] text-muted">
-            {["PYTHON · DJANGO · FASTAPI", "POSTGRESQL · PGVECTOR", "MULTI-TENANT SAAS · RAG · AGENTS", "3+ YEARS SHIPPING"].map(
-              (m) => (
-                <li data-hero-meta key={m} className="flex items-center gap-2.5">
-                  <span aria-hidden className="text-accent">▸</span> {m}
-                </li>
-              ),
-            )}
+          <ul className="mt-14 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.12em] text-muted">
+            {[
+              "PYTHON · DJANGO · FASTAPI · NODE.JS",
+              "GCP · AWS · DOCKER",
+              "MULTI-TENANT SAAS · RAG · AGENTS",
+              "3+ YEARS OF EXPERIENCES",
+            ].map((m) => (
+              <li data-hero-meta key={m} className="flex items-center gap-2.5">
+                <span aria-hidden className="text-accent">
+                  ▸
+                </span>{" "}
+                {m}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
@@ -260,7 +352,11 @@ export function Hero() {
             <motion.span
               className="absolute left-0 top-0 h-4 w-px bg-accent"
               animate={reduced ? undefined : { y: [-16, 40] }}
-              transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             />
           </span>
         </div>

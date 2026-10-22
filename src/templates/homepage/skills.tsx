@@ -1,6 +1,14 @@
 "use client";
 
-import { Bot, Cloud, Code2, Database, Plug, Server } from "lucide-react";
+import {
+  Bot,
+  Cloud,
+  Code2,
+  Database,
+  Layout,
+  Plug,
+  Server,
+} from "lucide-react";
 import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
@@ -8,7 +16,7 @@ import { TechStack, type StackGroup } from "@/components/ui/TechStack";
 
 /**
  * Six balanced groups (5-6 tools each), strongest areas first.
- * `core: true` marks tools used day to day, so edit those to match reality.
+ * `
  */
 const groups: StackGroup[] = [
   {
@@ -19,11 +27,24 @@ const groups: StackGroup[] = [
     accent: "#38bdf8",
     tools: [
       { name: "Django", core: true },
-      { name: "FastAPI", core: true },
+      { name: "FastAPI" },
       { name: "Node.js" },
-      { name: "REST APIs", core: true },
       { name: "GraphQL" },
       { name: "WebSockets" },
+    ],
+  },
+  {
+    key: "frontend",
+    label: "Frontend",
+    caption: "Interfaces and state",
+    icon: Layout,
+    accent: "#5eead4",
+    tools: [
+      { name: "React", core: true },
+      { name: "Next.js" },
+      { name: "TypeScript" },
+      { name: "Tailwind CSS" },
+      { name: "Framer Motion" },
     ],
   },
   {
@@ -34,10 +55,10 @@ const groups: StackGroup[] = [
     accent: "#f0abfc",
     tools: [
       { name: "Google ADK", core: true },
-      { name: "RAG", core: true },
-      { name: "Gemini" },
-      { name: "Pinecone", core: true },
+      { name: "Langchain" },
       { name: "Vertex AI" },
+      { name: "Pinecone" },
+      { name: "RAG" },
     ],
   },
   {
@@ -48,25 +69,11 @@ const groups: StackGroup[] = [
     accent: "#a78bfa",
     tools: [
       { name: "PostgreSQL", core: true },
-      { name: "pgvector", core: true },
-      { name: "Redis", core: true },
-      { name: "Celery", core: true },
-      { name: "MongoDB" },
-    ],
-  },
-  {
-    key: "languages",
-    label: "Languages & Frontend",
-    caption: "Code and interfaces",
-    icon: Code2,
-    accent: "#5eead4",
-    tools: [
-      { name: "Python", core: true },
-      { name: "TypeScript", core: true },
-      { name: "JavaScript" },
-      { name: "C++" },
-      { name: "React", core: true },
-      { name: "Next.js", core: true },
+      { name: "MongoDB", core: true },
+      { name: "pgvector" },
+      { name: "Redis" },
+      { name: "Celery" },
+      { name: "Kafka" },
     ],
   },
   {
@@ -77,10 +84,10 @@ const groups: StackGroup[] = [
     accent: "#fbbf24",
     tools: [
       { name: "Stripe", core: true },
+      { name: "Firebase", core: true },
       { name: "WhatsApp" },
       { name: "Messenger" },
       { name: "Instagram" },
-      { name: "Amazon SES" },
     ],
   },
   {
@@ -91,10 +98,11 @@ const groups: StackGroup[] = [
     accent: "#fb7185",
     tools: [
       { name: "Docker", core: true },
-      { name: "AWS" },
+      { name: "AWS", core: true },
       { name: "Google Cloud" },
-      { name: "Cloudflare R2" },
-      { name: "Firebase" },
+      { name: "Cloudflare" },
+      { name: "Nginx" },
+      { name: "GitHub Actions" },
     ],
   },
 ];

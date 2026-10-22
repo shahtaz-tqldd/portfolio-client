@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { StaticImageData } from "next/image";
 import { hashCode, mulberry32 } from "@/lib/utils";
 
 /**
@@ -16,7 +17,7 @@ export function ProjectPreview({
   seed: string;
   accent: string;
   label: string;
-  logo: string;
+  logo: StaticImageData;
 }) {
   const rand = mulberry32(hashCode(seed));
   const w = 560;

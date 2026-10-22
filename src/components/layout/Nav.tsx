@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
-import { ArrowUpRight, Download, Menu, X } from "lucide-react";
+import { ArrowUpRight, Download, Layers2, Menu, X } from "lucide-react";
 import { site } from "@/lib/data/site";
 import { ThemeToggle } from "@/components/providers/ThemeProvider";
 import { useSmoothScroll } from "@/components/providers/SmoothScroll";
@@ -71,10 +71,15 @@ export function Nav() {
       ref={barRef}
       className={cn(
         "fixed inset-x-0 top-0 z-[70] transition-[background-color,border-color,backdrop-filter] duration-500",
-        scrolled ? "border-b border-line bg-bg/70 backdrop-blur-xl" : "border-b border-transparent",
+        scrolled
+          ? "border-b border-line bg-bg/70 backdrop-blur-xl"
+          : "border-b border-transparent",
       )}
     >
-      <nav className="container-x flex h-16 items-center justify-between" aria-label="Primary">
+      <nav
+        className="container-x flex h-16 items-center justify-between"
+        aria-label="Primary"
+      >
         <Link
           href="/"
           className="group flex items-center font-mono text-sm tracking-wider text-fg"
@@ -113,13 +118,12 @@ export function Nav() {
 
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
-          <a
-            href={site.resume}
-            download
+          <Link
+            href={site.resumePage}
             className="btn hidden !px-4 !py-2 border border-linestrong bg-surface text-fg hover:border-accent hover:text-accent sm:inline-flex"
           >
-            <Download className="size-3.5" /> Résumé
-          </a>
+            <Layers2 className="size-3.5" /> Resume
+          </Link>
           <button
             type="button"
             className="grid size-9 place-items-center rounded-full border border-line bg-surface text-muted lg:hidden"
@@ -160,9 +164,12 @@ export function Nav() {
                 </motion.li>
               ))}
               <li className="px-4 pt-2">
-                <a href={site.resume} download className="btn border border-linestrong bg-surface text-fg">
+                <Link
+                  href={site.resumePage}
+                  className="btn border border-linestrong bg-surface text-fg"
+                >
                   <Download className="size-3.5" /> Résumé
-                </a>
+                </Link>
               </li>
             </ul>
           </motion.div>

@@ -46,7 +46,7 @@ const focus: Focus[] = [
 
 const stats = [
   { value: "3+ years", label: "Professional Experiences" },
-  { value: "20+", label: "Live Products Shipped" },
+  { value: "20+", label: "Products Shipped on Live" },
 ];
 
 const facts = [

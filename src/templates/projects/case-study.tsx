@@ -12,13 +12,14 @@ import { SectionHeading } from "@/components/motion/SectionHeading";
 import { MetricCounter } from "@/components/motion/MetricCounter";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { DiagramViewer } from "@/components/diagrams/DiagramViewer";
-import { MediaGallery } from "./MediaGallery";
-import { ChapterNav, type Chapter } from "./ChapterNav";
 import { CodeBlock } from "@/components/ui/CodeBlock";
 import { StackRegistry } from "@/components/ui/StackRegistry";
 import { StatCard } from "@/components/ui/StatCard";
 import { BarChart } from "@/components/ui/BarChart";
 import { EASE, cn } from "@/lib/utils";
+
+import { MediaGallery } from "./media-gallery";
+import { ChapterNav, type Chapter } from "./chapter-nav";
 
 const chapters: Chapter[] = [
   { id: "overview", label: "Overview" },
@@ -78,14 +79,8 @@ function HeroBanner({ p }: { p: Project }) {
       <div className="container-x">
         <Reveal y={10} duration={0.5}>
           <p className="kicker flex flex-wrap items-center gap-3">
-            <Link
-              href="/#projects"
-              className="text-muted transition-colors hover:text-accent"
-            >
-              ← Case studies
-            </Link>
-            <span className="h-px w-8 bg-accent/60" aria-hidden />
-            <span className="text-muted/70 uppercase tracking-[0.22em]">
+            <span className="h-px w-6 bg-accent/60" aria-hidden />
+            <span className="text-muted/70 uppercase text-xs">
               {p.tagline}
             </span>
           </p>

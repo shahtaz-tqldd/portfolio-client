@@ -8,7 +8,7 @@ export interface Job {
   end: Date | null; // null = present
   periodLabel: string;
   accent: string;
-  /** Shown on the card: bold lead + a very short line. Max 4. */
+  /** Shown on the card: bold lead + a very short line. */
   highlights: { lead: string; text: string }[];
   /** Shown only in the details view. */
   details: {
@@ -23,73 +23,126 @@ export const experience: Job[] = [
     slug: "echologyx",
     role: "Software Engineer (L2)",
     company: "Echologyx Ltd.",
-    about: "Software company building an AI-powered chatbot platform for businesses.",
+    about:
+      "Software company building AI-powered chatbot solutions that help businesses automate customer conversations across digital channels.",
     start: new Date(2024, 2),
     end: null,
     periodLabel: "Mar 2024 – Present",
     accent: "#FA4B00",
     highlights: [
-      { lead: "Multi-tenant backend", text: "Django services with subscriptions and Stripe." },
-      { lead: "AI redesign", text: "FastAPI, Google ADK and Pinecone for sharper answers." },
-      { lead: "Messaging channels", text: "Messenger, WhatsApp, Instagram and SES." },
-      { lead: "Vector search", text: "Product and variant retrieval for recommendations." },
+      {
+        lead: "SaaS architecture",
+        text: "Built multi-tenant backend services with subscription and Stripe billing.",
+      },
+      {
+        lead: "AI agent engineering",
+        text: "Developed RAG-powered conversational systems using Google ADK and FastAPI.",
+      },
+      {
+        lead: "Retrieval optimization",
+        text: "Implemented vector search for knowledge retrieval and product recommendations.",
+      },
+      {
+        lead: "Omnichannel messaging",
+        text: "Integrated Messenger, WhatsApp, Instagram and transactional email.",
+      },
+      {
+        lead: "Real-time infrastructure",
+        text: "Worked on WebSockets, Redis and asynchronous workflows for live operations.",
+      },
     ],
     details: {
       overview:
-        "I work on the backend and AI layers of a chatbot platform that businesses use to talk to their customers across messaging channels. My work covers the core platform services, the conversational AI system, and the integrations that connect the two to the outside world.",
+        "I engineer backend services and AI capabilities for a multi-tenant chatbot platform used by businesses to automate customer interactions. My work spans SaaS architecture, conversational AI, retrieval systems, messaging integrations and real-time infrastructure, connecting customer-facing experiences with reliable backend services.",
       contributions: [
         {
-          title: "Multi-tenant platform backend",
-          body: "Built scalable backend services in Django, including the multi-tenant architecture that keeps each business's data and bots separate, plus subscription management and Stripe integration for billing.",
+          title: "Multi-tenant SaaS architecture",
+          body: "Developed Django backend services for a multi-tenant platform, with a focus on separating business and chatbot data, managing workspace-level functionality, enforcing subscription limits and integrating Stripe billing.",
         },
         {
-          title: "Conversational AI redesign",
-          body: "Redesigned the conversational AI system using FastAPI, Google ADK and Pinecone. I optimized how context is handled, which improved response accuracy and reduced token usage.",
+          title: "Conversational AI and agent architecture",
+          body: "Redesigned the conversational AI layer using FastAPI and Google ADK, organizing agent responsibilities and integrating knowledge retrieval and business-specific tools. Worked on context management and retrieval behavior to improve answer relevance and control token consumption.",
         },
         {
-          title: "Channel integrations",
-          body: "Integrated Messenger, WhatsApp, Instagram and Amazon SES. This involved webhook processing, asynchronous workflows and reliable message delivery, so messages are handled correctly even when retries or failures happen.",
+          title: "Knowledge retrieval and product recommendations",
+          body: "Implemented vector-based retrieval with Pinecone and explored PostgreSQL with pgvector for semantic search. Developed retrieval workflows for knowledge sources and product catalogs, including matching relevant products and variants to customer queries.",
         },
         {
-          title: "Vector search for recommendations",
-          body: "Developed an optimized vector-search solution that parses and retrieves relevant products and variants, powering the chatbot's product recommendations.",
+          title: "Messaging and third-party integrations",
+          body: "Integrated messaging channels including Messenger, WhatsApp and Instagram, alongside Amazon SES for email delivery. Built webhook-driven workflows and asynchronous processing to support message handling, external service communication and failure recovery.",
+        },
+        {
+          title: "Real-time communication and background processing",
+          body: "Worked with WebSockets, Redis and Celery to support real-time dashboard communication, background tasks and operational workflows. Contributed to session handling, presence-related functionality and the infrastructure connecting chatbot activity with the administration dashboard.",
         },
       ],
-      tech: ["Python", "Django", "FastAPI", "Google ADK", "Pinecone", "Stripe", "Amazon SES", "Celery", "Redis", "PostgreSQL"],
+      tech: [
+        "Python",
+        "Django",
+        "FastAPI",
+        "PostgreSQL",
+        "Redis",
+        "Celery",
+        "WebSockets",
+        "Google ADK",
+        "Pinecone",
+        "pgvector",
+        "Stripe",
+        "Amazon SES",
+        "Docker",
+        "AWS",
+      ],
     },
   },
   {
     slug: "aaykori",
     role: "MERN Stack Developer",
     company: "Aaykori Digital",
-    about: "Digital company building affiliate marketplace and HR management software.",
+    about:
+      "A fintech startup developing affiliate marketplace and custom softwares for niche industries.",
     start: new Date(2023, 6),
     end: new Date(2023, 11),
     periodLabel: "Jul 2023 – Dec 2023",
     accent: "#35e696",
     highlights: [
-      { lead: "Marketplace CMS", text: "Product listings, campaign tracking, analytics." },
-      { lead: "HRM modules", text: "Employee data and live performance dashboards." },
-      { lead: "APIs & components", text: "Secure REST APIs, reusable React UI." },
+      {
+        lead: "Affiliate marketplace",
+        text: "Developed CMS features for product listings, campaign tracking and analytics.",
+      },
+      {
+        lead: "HR management",
+        text: "Built employee management modules and real-time performance dashboards.",
+      },
+      {
+        lead: "Full-stack development",
+        text: "Created REST APIs and reusable React components across products.",
+      },
     ],
     details: {
       overview:
-        "My first professional role, working across the stack on two internal and client-facing products: an affiliate marketplace CMS and an HR management system.",
+        "Worked as a MERN Stack Developer across an affiliate marketplace CMS and an HR management system. Contributed to backend APIs, data-driven application features and reusable frontend components, gaining hands-on experience delivering full-stack web applications in a professional team.",
       contributions: [
         {
           title: "Affiliate marketplace CMS",
-          body: "Contributed to a CMS that supports dynamic product listings, campaign tracking and admin analytics.",
+          body: "Developed and maintained features for product listing management, affiliate campaign tracking and administrative analytics, helping administrators manage marketplace content and monitor campaign activity.",
         },
         {
-          title: "HRM modules",
-          body: "Developed modules for employee data management and real-time performance dashboards.",
+          title: "HR management and dashboards",
+          body: "Built HRM modules for employee data management and contributed to real-time performance dashboards, making operational information easier to access and monitor.",
         },
         {
-          title: "APIs and reusable components",
-          body: "Implemented secure REST APIs and reusable React components, which improved development speed and maintainability across the team.",
+          title: "REST APIs and reusable frontend components",
+          body: "Implemented REST API functionality and reusable React components, connecting frontend interfaces to backend services while improving consistency and maintainability across application features.",
         },
       ],
-      tech: ["MongoDB", "Express", "React", "Node.js", "REST APIs"],
+      tech: [
+        "JavaScript",
+        "Node.js",
+        "Express.js",
+        "React",
+        "MongoDB",
+        "REST APIs",
+      ],
     },
   },
 ];

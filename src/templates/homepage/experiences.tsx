@@ -64,7 +64,7 @@ function JobCard({ job, featured = false }: { job: Job; featured?: boolean }) {
           <span className="text-fg">{duration(job.start, job.end)}</span>
         </p>
 
-        <p className="mt-3 text-sm leading-snug text-muted">{job.about}</p>
+        <p className="mt-3 text-sm leading-snug text-muted !leading-6">{job.about}</p>
       </header>
 
       <hr className="-mx-8 mt-6"/>
@@ -82,7 +82,7 @@ function JobCard({ job, featured = false }: { job: Job; featured?: boolean }) {
             />
             <p className="text-sm leading-snug text-muted">
               <span className="font-semibold text-fg">{h.lead}</span>
-              <span className="block"> {h.text}</span>
+              <span className="block mt-1 leading-6"> {h.text}</span>
             </p>
           </li>
         ))}
@@ -105,8 +105,8 @@ export function Experience() {
           <SectionHeading
             index="04"
             kicker="Experience"
-            title="Where the systems shipped"
-            lead="From affiliate marketplaces to multi-tenant AI platforms."
+            title="My Journey in Software Engineering"
+            lead="From Engineering thinking to solving actual problems"
           />
 
           <Reveal delay={0.1}>

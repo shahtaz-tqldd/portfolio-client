@@ -6,7 +6,7 @@ import type { Project } from "@/lib/types";
 import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
-import { ProjectPreview } from "@/components/projects/ProjectPreview";
+import { ProjectPreview } from "@/templates/projects/project-preview";
 
 export function ProjectsOverview({ projects }: { projects: Project[] }) {
   return (
@@ -17,8 +17,8 @@ export function ProjectsOverview({ projects }: { projects: Project[] }) {
         <SectionHeading
           index="03"
           kicker="Projects"
-          title="Case studies, not screenshots"
-          lead="Two deep dives into systems I designed — architecture, schema, trade-offs and the parts that went wrong before they went right. Each opens as a full presentation."
+          title="Organized Case Studies"
+          lead="Systems that I designed — architecture, schema, trade-offs and the parts that went wrong before they went right."
         />
 
         <div className="mt-14 grid gap-7 md:grid-cols-2">
@@ -50,7 +50,12 @@ export function ProjectCard({
         {/* preview */}
         <div className="relative overflow-hidden border-b border-line p-5">
           <div className="transition-transform duration-700 ease-outexpo group-hover:scale-[1.03]">
-            <ProjectPreview seed={p.slug} accent={p.accent} label={p.title} logo={p.logo} />
+            <ProjectPreview
+              seed={p.slug}
+              accent={p.accent}
+              label={p.title}
+              logo={p.logo}
+            />
           </div>
         </div>
 

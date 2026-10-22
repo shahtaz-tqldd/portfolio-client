@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import type { StaticImageData } from "next/image";
 
 /* ---------------------------------- site ---------------------------------- */
 
@@ -163,7 +164,7 @@ export interface TechLayer {
 export interface Project {
   slug: string;
   title: string;
-  logo: string;
+  logo: StaticImageData;
   tagline: string;
   summary: string;
   role: string;

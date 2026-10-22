@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import "./globals.css";
+import "@/assets/styles/globals.css";
 import { site } from "@/lib/data/site";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
@@ -12,11 +12,11 @@ import { GrainOverlay } from "@/components/backgrounds/GrainOverlay";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-space-grotesk",
   display: "swap",
 });
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", display: "swap" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

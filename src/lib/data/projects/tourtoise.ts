@@ -1,4 +1,5 @@
 import type { Project } from "@/lib/types";
+import tourtoiseLogo from "@/assets/images/tourtoise-logo.png";
 
 /**
  * Tourtoise — AI-powered travel planning platform.
@@ -7,7 +8,7 @@ import type { Project } from "@/lib/types";
 export const tourtoise: Project = {
   slug: "tourtoise",
   title: "Tourtoise",
-  logo: "/tourtoise-logo.png",
+  logo: tourtoiseLogo,
   tagline: "AI-powered travel planning platform",
   summary:
     "A multi-agent travel platform for destination discovery, itinerary generation and personalized trip planning: RAG-based destination Q&A over structured travel data, with agent workflows for preference collection, day-by-day planning, budgeting and contextual guidance.",

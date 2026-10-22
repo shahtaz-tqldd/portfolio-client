@@ -1,11 +1,11 @@
 import { projects } from "@/lib/data/projects";
-import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Skills } from "@/components/sections/Skills";
-import { ProjectsOverview } from "@/components/sections/ProjectsOverview";
-import { Experience } from "@/components/sections/Experience";
-import { Writing } from "@/components/sections/Writing";
-import { Contact } from "@/components/sections/Contact";
+import { Hero } from "@/templates/homepage/hero";
+import { About } from "@/templates/homepage/about";
+import { Skills } from "@/templates/homepage/skills";
+import { ProjectsOverview } from "@/templates/homepage/project-overview";
+import { Experience } from "@/templates/homepage/experiences";
+import { Writing } from "@/templates/homepage/writing";
+import { Contact } from "@/templates/homepage/contact";
 
 export default function HomePage() {
   return (

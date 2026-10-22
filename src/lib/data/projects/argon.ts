@@ -1,4 +1,5 @@
 import type { Project } from "@/lib/types";
+import argonLogo from "@/assets/images/argon-logo.png";
 
 /**
  * Argon Chatbot — multi-tenant agentic AI chatbot SaaS.
@@ -7,7 +8,7 @@ import type { Project } from "@/lib/types";
 export const argon: Project = {
   slug: "argon",
   title: "Argon Chatbot",
-  logo: "/argon-logo.png",
+  logo: argonLogo,
   tagline: "Multi-tenant agentic AI chatbot SaaS",
   summary:
     "A multi-tenant agentic chatbot SaaS with workspace isolation and configurable chatbots: RAG over PostgreSQL + pgvector, business workflows like lead scoring, appointment booking and human handoff, wired into external communication channels.",

@@ -1,6 +1,33 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* v3 compat: class-based dark mode (site toggles `light` on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface-2);
+  --color-line: var(--line);
+  --color-linestrong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent2: var(--accent-2);
+  --color-warm: var(--warm);
+
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --container-content: 72rem;
+
+  --ease-outexpo: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-dash-flow: dash-flow 1.1s linear infinite;
+  --animate-slow-drift: slow-drift 26s ease-in-out infinite;
+  --animate-blink: blink 1.6s steps(2, start) infinite;
+}
 
 /* ------------------------------- design tokens ---------------------------- */
 
@@ -49,8 +76,8 @@ html.light {
   --line-strong: rgba(15, 23, 42, 0.3);
   --fg: #131a26;
   --muted: #59637a;
-  --accent: #0d9488;
-  --accent-2: #0e7490;
+  --accent: #14a461;
+  --accent-2: #29cd80;
   --warm: #b45309;
   --glow: rgba(13, 148, 136, 0.22);
   --grid: rgba(15, 23, 42, 0.05);
@@ -78,6 +105,16 @@ html.light {
 
 html {
   scroll-behavior: smooth;
+}
+
+/* v3 compat: default border color was var(--line) */
+@layer base {
+  *,
+  ::before,
+  ::after,
+  ::backdrop {
+    border-color: var(--line);
+  }
 }
 html.lenis-active {
   scroll-behavior: auto;
@@ -178,6 +215,17 @@ body {
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes dash-flow {
+  to { stroke-dashoffset: -24; }
+}
+@keyframes slow-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2%, -3%, 0) scale(1.06); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
 
 /* ------------------------------ code tokens ------------------------------- */
 
@@ -206,7 +254,7 @@ body {
   animation-duration: 0.65s;
 }
 .dg-edge-label {
-  font: 500 10px var(--font-mono), monospace;
+  font: 500 10px var(--font-jetbrains-mono), monospace;
   fill: var(--muted);
   paint-order: stroke;
   stroke: var(--bg);
@@ -226,11 +274,11 @@ body {
   stroke-width: 2;
 }
 .dg-node-label {
-  font: 600 12.5px var(--font-display), sans-serif;
+  font: 600 12.5px var(--font-space-grotesk), sans-serif;
   fill: var(--fg);
 }
 .dg-node-sub {
-  font: 400 10px var(--font-mono), monospace;
+  font: 400 10px var(--font-jetbrains-mono), monospace;
   fill: var(--muted);
 }
 .dg-group-box {
@@ -240,17 +288,17 @@ body {
   rx: 16;
 }
 .dg-group-label {
-  font: 500 10px var(--font-mono), monospace;
+  font: 500 10px var(--font-jetbrains-mono), monospace;
   fill: var(--muted);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 .dg-table-head {
-  font: 700 12px var(--font-mono), monospace;
+  font: 700 12px var(--font-jetbrains-mono), monospace;
   fill: var(--fg);
 }
 .dg-table-row {
-  font: 400 10.5px var(--font-mono), monospace;
+  font: 400 10.5px var(--font-jetbrains-mono), monospace;
   fill: var(--muted);
 }
 
