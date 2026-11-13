@@ -99,7 +99,7 @@ export function GraphDiagram({ view, activeNode, onNodeHover, onNodeSelect, clas
   return (
     <svg
       viewBox={`0 0 ${view.width} ${view.height}`}
-      className={cn("block h-auto w-full select-none", className)}
+      className={cn("block h-full w-full select-none", className)}
       role="img"
       aria-label={view.note ?? "System diagram"}
     >
@@ -165,16 +165,16 @@ export function GraphDiagram({ view, activeNode, onNodeHover, onNodeSelect, clas
           return (
             <g
               key={n.id}
-              className={cn("dg-node", hot && "hot")}
+              className={cn("dg-node cursor-pointer", hot && "hot")}
               style={{ opacity: dimmed ? 0.3 : 1 }}
               tabIndex={0}
               role="button"
               aria-label={`${n.label} table: ${n.desc}`}
               onMouseEnter={() => onNodeHover(n.id)}
               onMouseLeave={() => onNodeHover(null)}
-              onFocus={() => onNodeSelect(n.id)}
-              onBlur={() => onNodeSelect(null)}
-              onClick={() => onNodeSelect(hot ? null : n.id)}
+              onFocus={() => onNodeHover(n.id)}
+              onBlur={() => onNodeHover(null)}
+              onClick={() => onNodeSelect(n.id)}
             >
               <rect x={box.x} y={box.y} width={box.w} height={box.h} rx={12} className="dg-node-box" stroke={color} />
               <rect x={box.x} y={box.y} width={box.w} height={TABLE_HEAD_H} rx={12} fill="var(--surface-2)" />
@@ -206,16 +206,16 @@ export function GraphDiagram({ view, activeNode, onNodeHover, onNodeSelect, clas
         return (
           <g
             key={n.id}
-            className={cn("dg-node", hot && "hot")}
+            className={cn("dg-node cursor-pointer", hot && "hot")}
             style={{ opacity: dimmed ? 0.3 : 1 }}
             tabIndex={0}
             role="button"
             aria-label={`${n.label}: ${n.desc}`}
             onMouseEnter={() => onNodeHover(n.id)}
             onMouseLeave={() => onNodeHover(null)}
-            onFocus={() => onNodeSelect(n.id)}
-            onBlur={() => onNodeSelect(null)}
-            onClick={() => onNodeSelect(hot ? null : n.id)}
+            onFocus={() => onNodeHover(n.id)}
+            onBlur={() => onNodeHover(null)}
+            onClick={() => onNodeSelect(n.id)}
           >
             <rect x={box.x} y={box.y} width={box.w} height={box.h} rx={13} className="dg-node-box" stroke={color} strokeWidth={1.4} />
             {/* icon */}

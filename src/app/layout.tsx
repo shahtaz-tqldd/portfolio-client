@@ -5,8 +5,8 @@ import "@/assets/styles/globals.css";
 import { site } from "@/lib/data/site";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
-import { Nav } from "@/components/layout/Nav";
-import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer-section";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { GrainOverlay } from "@/components/backgrounds/GrainOverlay";
@@ -16,8 +16,16 @@ const display = Space_Grotesk({
   variable: "--font-space-grotesk",
   display: "swap",
 });
-const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap" });
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -45,10 +53,16 @@ export const viewport: Viewport = {
 
 const themeInit = `(function(){try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.classList.add("light")}}catch(e){}})();`;
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${display.variable} ${sans.variable} ${mono.variable} font-sans`}>
+      <body
+        className={`${display.variable} ${sans.variable} ${mono.variable} font-sans`}
+      >
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <Script
           src="https://algochatbot-widget.vercel.app/widget.js"
@@ -65,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </a>
             <ScrollProgress />
             <CustomCursor />
-            <Nav />
+            <Navbar />
             <main id="main">{children}</main>
             <Footer />
             <GrainOverlay />

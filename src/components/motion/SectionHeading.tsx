@@ -39,7 +39,7 @@ export function SectionHeading({
         </p>
       </Reveal>
 
-      <h2 id={headingId} className="mt-4 font-display text-3xl font-semibold tracking-tight text-fg sm:text-4xl lg:text-5xl">
+      <h2 id={headingId} className="mt-4 font-display text-3xl leading-14 font-semibold tracking-tight text-fg sm:text-4xl lg:text-5xl">
         <SplitText text={title} mode={variant} amount={0.3} />
       </h2>
 

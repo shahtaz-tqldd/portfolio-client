@@ -96,9 +96,9 @@ export function Experience() {
       <div className="container-x">
         <SectionHeading
           index="03"
-          kicker="Experience"
-          title="Where I've shipped"
-          lead="Two teams, one thread: turning product needs into backend systems that keep running."
+          kicker="Career"
+          title="Experience built through Engineering"
+          lead="Across professional teams and independent projects, I've worked on backend architecture, AI-powered applications, and software delivery taking ownership of systems from initial design through implementation and deployment."
         />
 
         {/* grid: featured left, stack right */}

@@ -5,7 +5,7 @@ export const site = {
   roleDetail: "Backend Software Engineer · RAG & LLM Applications",
   /** Shown in the hero kicker. Edit or blank out when you're not taking work. */
   availability: "Open to relocate",
-  pitch: "I build backend systems and LLM-powered applications, specializing in AI agents and RAG pipelines. I care about clean data models, fast responses and low LLM costs.",
+  pitch: "I build backend systems and cost-efficient AI applications to address high-impact business challenges. From scalable architecture and tools integrations to end-to-end product development, I turn product concepts into purposeful software.",
   location: "Dhaka, Bangladesh",
   email: "shahtaz67@gmail.com",
   url: "https://www.shahtaz.dev",

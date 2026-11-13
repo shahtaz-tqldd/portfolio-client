@@ -5,13 +5,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import gsap from "gsap";
-import { ArrowUpRight, Download, Layers2, Menu, X } from "lucide-react";
+import { ArrowUpRight, FileText, Menu, X } from "lucide-react";
 import { site } from "@/lib/data/site";
 import { ThemeToggle } from "@/components/providers/ThemeProvider";
 import { useSmoothScroll } from "@/components/providers/SmoothScroll";
 import { EASE, cn } from "@/lib/utils";
 
-export function Nav() {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string>("");
   const [open, setOpen] = useState(false);
@@ -98,18 +98,11 @@ export function Nav() {
                   onClick={go(n.id)}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "relative rounded-full px-4 py-2 font-mono text-[11px] uppercase tracking-[0.18em] transition-colors duration-300",
+                    "relative rounded-full px-4 py-2 font-mono text-xs uppercase tracking-[0.12em] font-semibold transition-colors duration-300",
                     isActive ? "text-accent" : "text-muted hover:text-fg",
                   )}
                 >
                   {n.label}
-                  {isActive ? (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-full border border-accent/30 bg-accent/10"
-                      transition={{ duration: 0.5, ease: EASE }}
-                    />
-                  ) : null}
                 </Link>
               </li>
             );
@@ -122,7 +115,7 @@ export function Nav() {
             href={site.resumePage}
             className="btn hidden !px-4 !py-2 border border-linestrong bg-surface text-fg hover:border-accent hover:text-accent sm:inline-flex"
           >
-            <Layers2 className="size-3.5" /> Resume
+            View Resume
           </Link>
           <button
             type="button"
@@ -168,7 +161,7 @@ export function Nav() {
                   href={site.resumePage}
                   className="btn border border-linestrong bg-surface text-fg"
                 >
-                  <Download className="size-3.5" /> Résumé
+                  <FileText className="size-3.5" /> View Resume
                 </Link>
               </li>
             </ul>

@@ -1,12 +1,19 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 import { ArrowUpRight, Mail, Phone, Send, Sparkles, XIcon } from "lucide-react";
 import { site } from "@/lib/data/site";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { GitHubIcon, LinkedInIcon } from "@/assets/icons/globals";
+
+/* ───────── EmailJS config (see .env.example) ───────── */
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+const emailjsConfigured = Boolean(SERVICE_ID && TEMPLATE_ID && PUBLIC_KEY);
 
 /* ───────── contact data ───────── */
 // TODO: move these into @/lib/data/site once you're happy with them.
@@ -57,9 +64,12 @@ const openAssistant = () => {
 const inputClass =
   "mt-2 w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-fg placeholder:text-muted/50 transition-colors focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/30";
 
+type Status = "idle" | "sending" | "sent" | "error";
+
 export function Contact() {
   const [copied, setCopied] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<Status>("idle");
 
   const copyEmail = async () => {
     try {
@@ -69,13 +79,47 @@ export function Contact() {
     } catch {}
   };
 
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
+  const update = (patch: Partial<typeof form>) => {
+    setForm((f) => ({ ...f, ...patch }));
+    if (status !== "idle") setStatus("idle");
+  };
+
+  const mailtoFallback = () => {
     const subject = encodeURIComponent(`Portfolio contact — ${form.name}`);
     const body = encodeURIComponent(
       `${form.message}\n\n— ${form.name} (${form.email})`,
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
+  };
+
+  const submit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (status === "sending") return;
+
+    // not configured yet — keep the old mailto behavior
+    if (!emailjsConfigured) {
+      mailtoFallback();
+      return;
+    }
+
+    setStatus("sending");
+    try {
+      await emailjs.send(
+        SERVICE_ID!,
+        TEMPLATE_ID!,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          reply_to: form.email,
+          message: form.message,
+        },
+        { publicKey: PUBLIC_KEY! },
+      );
+      setStatus("sent");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -201,7 +245,7 @@ export function Contact() {
                     required
                     autoComplete="name"
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e) => update({ name: e.target.value })}
                     className={inputClass}
                     placeholder="Your Name"
                   />
@@ -215,9 +259,7 @@ export function Contact() {
                     type="email"
                     autoComplete="email"
                     value={form.email}
-                    onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
-                    }
+                    onChange={(e) => update({ email: e.target.value })}
                     className={inputClass}
                     placeholder="abc@email.com"
                   />
@@ -232,18 +274,30 @@ export function Contact() {
                   required
                   rows={6}
                   value={form.message}
-                  onChange={(e) =>
-                    setForm({ ...form, message: e.target.value })
-                  }
+                  onChange={(e) => update({ message: e.target.value })}
                   className={`${inputClass} resize-none`}
                   placeholder="Write your concerns, project requirements or any queries directly to my mailbox"
                 />
               </label>
 
-              <div className="mt-6">
+              <div className="mt-6 flex flex-wrap items-center gap-4">
                 <MagneticButton variant="primary" type="submit">
-                  <Send className="size-3.5" /> Send message
+                  <Send className="size-3.5" />
+                  {status === "sending"
+                    ? "Sending…"
+                    : status === "sent"
+                      ? "Message sent"
+                      : "Send message"}
                 </MagneticButton>
+                {status === "sent" ? (
+                  <p className="font-mono text-xs text-accent" role="status">
+                    Thanks — I usually reply within 24 hours.
+                  </p>
+                ) : status === "error" ? (
+                  <p className="font-mono text-xs text-[var(--warm)]" role="alert">
+                    Something went wrong — try again, or email me directly.
+                  </p>
+                ) : null}
               </div>
             </form>
           </Reveal>

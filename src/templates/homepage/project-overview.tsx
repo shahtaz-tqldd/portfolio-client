@@ -16,7 +16,7 @@ export function ProjectsOverview({ projects }: { projects: Project[] }) {
         <SectionHeading
           index="02"
           kicker="Projects"
-          title="Things I've built"
+          title="Things I have built"
           lead="AI agents, data-heavy platforms and developer tools: each with its architecture and the reasoning behind it."
         />
         <ProjectGrid projects={projects} className="mt-14" />
@@ -29,7 +29,13 @@ export function ProjectsOverview({ projects }: { projects: Project[] }) {
  * Shared by the home page and /projects so both always match:
  * featured projects as equal cards in 2 columns, then compact projects as "Other builds".
  */
-export function ProjectGrid({ projects, className }: { projects: Project[]; className?: string }) {
+export function ProjectGrid({
+  projects,
+  className,
+}: {
+  projects: Project[];
+  className?: string;
+}) {
   const featured = projects.filter((p) => p.tier === "featured");
   const compact = projects.filter((p) => p.tier === "compact");
 
@@ -47,7 +53,9 @@ export function ProjectGrid({ projects, className }: { projects: Project[]; clas
 
       {compact.length > 0 ? (
         <div className="mt-14">
-          <h3 className="font-mono text-[11px] tracking-[0.22em] text-muted uppercase">Other builds</h3>
+          <h3 className="font-mono text-[11px] tracking-[0.22em] text-muted uppercase">
+            Other builds
+          </h3>
           <div className="mt-4 divide-y divide-line border-y border-line">
             {compact.map((p) => (
               <Reveal key={p.slug} y={12}>
@@ -61,9 +69,19 @@ export function ProjectGrid({ projects, className }: { projects: Project[]; clas
   );
 }
 
-export function ProjectCard({ project: p, wide = false }: { project: Project; wide?: boolean }) {
+export function ProjectCard({
+  project: p,
+  wide = false,
+}: {
+  project: Project;
+  wide?: boolean;
+}) {
   return (
-    <Link href={`/projects/${p.slug}`} className="group relative block h-full" aria-label={`${p.title} case study`}>
+    <Link
+      href={`/projects/${p.slug}`}
+      className="group relative block h-full"
+      aria-label={`${p.title} case study`}
+    >
       <article
         className={cn(
           "card relative flex h-full flex-col overflow-hidden transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-accent/40 group-hover:shadow-[0_24px_60px_-28px_var(--glow)]",
@@ -71,15 +89,34 @@ export function ProjectCard({ project: p, wide = false }: { project: Project; wi
         )}
       >
         {/* preview */}
-        <div className={cn("relative overflow-hidden border-b border-line p-5", wide && "lg:border-r lg:border-b-0 lg:p-7")}>
+        <div
+          className={cn(
+            "relative overflow-hidden border-b border-line p-5",
+            wide && "lg:border-r lg:border-b-0 lg:p-7",
+          )}
+        >
           <div className="transition-transform duration-700 ease-outexpo group-hover:scale-[1.03]">
-            <ProjectPreview seed={p.slug} accent={p.accent} label={p.title} logo={p.logo} />
+            <ProjectPreview
+              seed={p.slug}
+              accent={p.accent}
+              label={p.title}
+              logo={p.logo}
+            />
           </div>
         </div>
 
-        <div className={cn("flex flex-1 flex-col p-6 sm:p-7", wide && "lg:justify-center lg:p-10")}>
+        <div
+          className={cn(
+            "flex flex-1 flex-col p-6 sm:p-7",
+            wide && "lg:justify-center lg:p-10",
+          )}
+        >
           <div className="flex items-center gap-3">
-            <span className="size-1.5 shrink-0 rounded-full" style={{ background: p.accent }} aria-hidden />
+            <span
+              className="size-1.5 shrink-0 rounded-full"
+              style={{ background: p.accent }}
+              aria-hidden
+            />
             <p className="font-mono text-[11px] text-muted">{p.eyebrow}</p>
           </div>
 
@@ -92,7 +129,12 @@ export function ProjectCard({ project: p, wide = false }: { project: Project; wi
             {p.title}
           </h3>
 
-          <p className={cn("mt-3 flex-1 leading-relaxed text-muted", wide ? "text-base lg:flex-none" : "text-sm")}>
+          <p
+            className={cn(
+              "mt-3 flex-1 leading-relaxed text-muted",
+              wide ? "text-base lg:flex-none" : "text-sm",
+            )}
+          >
             {p.summary}
           </p>
 
@@ -124,7 +166,9 @@ function CompactProjectRow({ project: p }: { project: Project }) {
           </Link>
           <span className="font-mono text-[11px] text-muted">{p.eyebrow}</span>
         </div>
-        <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted">{p.summary}</p>
+        <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted">
+          {p.summary}
+        </p>
       </div>
 
       {p.links.length > 0 ? (
@@ -135,7 +179,9 @@ function CompactProjectRow({ project: p }: { project: Project }) {
               <a
                 key={l.href}
                 href={l.href}
-                {...(download ? { download: true } : { target: "_blank", rel: "noopener noreferrer" })}
+                {...(download
+                  ? { download: true }
+                  : { target: "_blank", rel: "noopener noreferrer" })}
                 className="chip hover:border-accent/50 hover:text-accent"
               >
                 {l.kind === "repo" ? (

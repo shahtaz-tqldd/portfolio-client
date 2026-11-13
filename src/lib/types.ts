@@ -133,6 +133,12 @@ export interface HowItWorksPoint {
   body: string;
 }
 
+/** A user-facing capability worth calling out on the case study. */
+export interface Feature {
+  title: string;
+  body: string;
+}
+
 export interface Project {
   slug: string;
   /** Listing + "next case study" order (ascending). */
@@ -156,6 +162,8 @@ export interface Project {
   media?: MediaItem[];
   /** High-level view(s) for the interactive diagram. */
   architecture?: DiagramView[];
+  /** Notable, user-facing capabilities with a short explanation each. */
+  features?: Feature[];
   howItWorks: HowItWorksPoint[];
   techStack: TechLayer[];
   links: ProjectLink[];
