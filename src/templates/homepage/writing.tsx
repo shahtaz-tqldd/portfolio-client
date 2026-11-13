@@ -1,5 +1,4 @@
 import { ArrowUpRight, BookOpen } from "lucide-react";
-import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 
@@ -15,17 +14,17 @@ const articles = [
   {
     number: "02",
     category: "SYSTEM DESIGN · SCALING",
-    title: "ABC of system design: understanding scaling",
+    title: "ABC of system design: understanding the concept of scaling",
     description: "An introduction to scaling concepts and the choices behind growing systems.",
     url: "https://medium.com/@shahtaz67/abc-of-system-design-understanding-scaling-08230c5fdffb",
     accent: "#fbbf24",
   },
   {
     number: "03",
-    category: "CSS · QUICK GUIDE",
-    title: "Customizing scrollbars in just a few steps",
-    description: "A practical walkthrough of styling scrollbars for a more considered interface.",
-    url: "https://medium.com/@shahtaz67/customizing-scrollbars-just-a-few-steps-9707c2fc7dce",
+    category: "DEVOPS · APPLICATION DEPLOYMENT",
+    title: "Deploying Applications on a VPS with Docker, Nginx, SSL, and GitHub Actions",
+    description: "A step by step guidelines of deploying a dockerized application on a VPS server.",
+    url: "https://medium.com/@shahtaz67/deploying-applications-on-a-vps-with-docker-nginx-ssl-and-github-actions-f72baf4087bd",
     accent: "#38bdf8",
   },
 ];
@@ -33,14 +32,12 @@ const articles = [
 export function Writing() {
   return (
     <section id="writing" className="relative py-20 sm:py-28">
-      <SectionBackground from="left" tint="cyan" />
-
       <div className="container-x">
         <SectionHeading
-          index="05"
+          index="04"
           kicker="Writing"
           title="Notes from building things"
-          lead="A few guides and ideas I’ve shared on Medium, from interface details to AI agents and system design."
+          lead="Guides I’ve published on Medium about AI agents, system design and deployment."
         />
 
         <div className="mt-12 grid gap-4 md:grid-cols-3">

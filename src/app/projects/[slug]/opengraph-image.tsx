@@ -42,7 +42,7 @@ export default async function Image({
         />
         <div
           style={{ color: "#98a2b3", fontSize: 22, letterSpacing: 6 }}
-        >{`CASE STUDY — ${project.tagline.toUpperCase()}`}</div>
+        >{`CASE STUDY — ${project.eyebrow.toUpperCase()}`}</div>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column" }}>

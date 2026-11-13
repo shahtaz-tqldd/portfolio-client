@@ -9,9 +9,8 @@ import {
 } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDown, Download, Layers2 } from "lucide-react";
+import { ArrowRight, Layers2 } from "lucide-react";
 import { site } from "@/lib/data/site";
-import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { mulberry32 } from "@/lib/utils";
 
@@ -232,10 +231,8 @@ export function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative flex min-h-svh flex-col overflow-hidden pt-16"
+      className="relative flex min-h-svh flex-col overflow-x-clip pt-16"
     >
-      <SectionBackground from="left" tint="teal" />
-
       {/* cursor-reactive glow */}
       <motion.div
         aria-hidden
@@ -261,11 +258,11 @@ export function Hero() {
               className="inline-block size-1.5 rounded-full bg-accent animate-blink"
               aria-hidden
             />
-            Software Engineer — {site.location}
+            {site.location} · {site.availability}
           </p>
 
           <h1
-            className="mt-7 font-display text-[clamp(2.4rem,7.5vw,5.4rem)] font-semibold leading-[1.06] tracking-tight"
+            className="mt-7 font-display text-[clamp(2.4rem,7.5vw,4.8rem)] font-semibold leading-[1.06]"
             aria-label={NAME}
           >
             <span ref={nameRef} className="relative inline-block">
@@ -303,21 +300,20 @@ export function Hero() {
             data-hero-role
             className="mt-6 font-mono text-sm tracking-wide text-accent sm:text-base"
           >
-            System Architecture · Backend · AI Systems · User Interface
+            {site.roleDetail}
           </p>
 
           <p
             data-hero-tagline
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted sm:text-xl"
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl"
           >
-            Full-stack Engineer building multi-tenant SaaS, agentic AI systems,
-            and RAG pipelines. From the requirements analysis to the product design.
+            {site.pitch}
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-16 flex flex-wrap items-center gap-4">
             <span data-hero-cta>
               <MagneticButton href="/projects" variant="primary">
-                View Projects <ArrowDown className="size-3.5" />
+                View Projects <ArrowRight className="size-3.5" />
               </MagneticButton>
             </span>
             <span data-hero-cta>
@@ -327,12 +323,12 @@ export function Hero() {
             </span>
           </div>
 
-          <ul className="mt-14 flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.12em] text-muted">
+          <ul className="mt-14 max-w-xl flex flex-wrap gap-x-8 gap-y-3 font-mono text-[11px] tracking-[0.12em] text-muted">
             {[
-              "PYTHON · DJANGO · FASTAPI · NODE.JS",
-              "GCP · AWS · DOCKER",
-              "MULTI-TENANT SAAS · RAG · AGENTS",
-              "3+ YEARS OF EXPERIENCES",
+              "3+ YEARS PROFESSIONAL EXPERIENCE",
+              "PYTHON · DJANGO · FASTAPI",
+              "AI AGENTS · RAG · LLMs",
+              "AWS · GCP",
             ].map((m) => (
               <li data-hero-meta key={m} className="flex items-center gap-2.5">
                 <span aria-hidden className="text-accent">

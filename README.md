@@ -26,29 +26,25 @@ src/
       site.ts                 # name, links, nav, bio
       skills.ts               # skill groups
       experience.ts           # timeline entries
-      projects/
-        argon.ts              # case study 1 (data only)
-        tourtoise.ts          # case study 2 (data only)
-        index.ts              # registry — add new projects here
-    highlight.ts              # tiny code tokenizer for challenge snippets
+      projects.ts             # ALL projects (order, tier, case-study content)
   components/
     motion/                   # Reveal, RevealGroup, SplitText, SectionHeading,
-                              # MagneticButton, MetricCounter, Tilt
+                              # MagneticButton, Tilt
     backgrounds/              # SectionBackground, NodeNetwork (canvas motif), GrainOverlay
     layout/                   # Nav, Footer, CustomCursor, ScrollProgress
     sections/                 # home page sections
     projects/                 # CaseStudy, ChapterNav, FlowPlayer, MediaGallery, ProjectPreview
     diagrams/                 # DiagramViewer (zoom/pan/fullscreen) + GraphDiagram renderer
-    ui/                       # CodeBlock, StatCard, BarChart
+    ui/                       # StackRegistry (tech-stack swimlanes)
     providers/                # ThemeProvider, SmoothScroll (Lenis + GSAP bridge)
 content/ASSUMPTIONS.md        # what's illustrative vs. real
 ```
 
 ## Adding a new project
 
-1. Duplicate `src/lib/data/projects/argon.ts` (or `tourtoise.ts`) and fill the `Project` schema in `src/lib/types.ts`. Every chapter of the case study renders from this data — no layout code changes needed.
-2. Register it in `src/lib/data/projects/index.ts`.
-3. Done — routing, chapter nav, SEO metadata and the OG image generate automatically.
+1. Add an object to `src/lib/data/projects.ts` following the `Project` schema in `src/lib/types.ts`, and put it in the `projects` array.
+2. Set `order` (listing + "next case study" order) and `tier` (`featured` = card + full case study, `compact` = "Other builds" row + short page).
+3. Leave out anything you don't know. Empty fields hide their UI: no button without a URL, no gallery without real media, no timeline row without a timeline, no section without data. Chapter numbers follow the sections actually shown.
 
 ### Diagrams
 
@@ -60,16 +56,10 @@ Architecture and ER diagrams are typed JSON: `nodes`, `edges`, `groups`, `views`
 - ER tables: nodes with `kind: "table"` and a `rows[]` array; mark keys with `key: "pk" | "fk" | "idx" | "vec"`.
 - The viewer gives you zoom/pan, fullscreen, hover-highlight of connected paths and a side panel from each node's `desc`.
 
-### Placeholders (replace before publishing)
+### Content rules
 
-Search for these markers across `src/lib/data`:
-
-- `[GITHUB_URL]`, `[LINKEDIN_URL]`, `[ARGON_*]`, `[TOURTOISE_*]` — links in `site.ts` and project files
-- `[METRIC: …]` — performance numbers rendered as clearly-marked placeholder badges
-- `[ADD: …]` — observability / CI-CD tool entries in tech stacks
-- `illustrative` — chart values and diagram assumptions (see `content/ASSUMPTIONS.md`)
-- `/resume.pdf` — drop your résumé into `public/`
-- media items with no `src` render labelled placeholder frames; set `src` (and `poster` for videos) to real files in `/public`
+- Never put placeholder text (`[...]`, `TODO`) in project data. Leave the field out instead.
+- Only real facts: no invented metrics, tools or features.
 
 ## Customizing
 

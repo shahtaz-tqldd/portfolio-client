@@ -107,108 +107,57 @@ export interface DiagramDef {
 
 /* -------------------------------- projects -------------------------------- */
 
-export interface Metric {
-  label: string;
-  value?: number;
-  prefix?: string;
-  suffix?: string;
-  /** clearly-marked placeholder text used when no real number exists yet */
-  placeholder?: string;
-  sub?: string;
-}
-
-export interface ChartSeries {
-  label: string;
-  value: number;
-  hint?: string;
-}
-
-export interface ChartData {
-  title: string;
-  unit?: string;
-  series: ChartSeries[];
-  /** marks the values as illustrative (not measured) */
-  illustrative?: boolean;
-  note?: string;
-}
-
-export interface CodeSample {
-  lang: "python" | "sql" | "tsx" | "bash";
-  filename?: string;
-  code: string;
-}
-
 export interface ProjectLink {
   label: string;
   href: string;
-  kind: "live" | "repo" | "app";
+  kind: "live" | "repo" | "download";
 }
 
+/** Only real media. Items without a src are never rendered. */
 export interface MediaItem {
   type: "image" | "video";
-  /** real src — leave undefined to render a labelled placeholder */
-  src?: string;
+  src: string;
   poster?: string;
   caption: string;
-  /** placeholder label shown when src is missing */
-  placeholderLabel?: string;
   span?: "wide" | "tall" | "big";
 }
 
 export interface TechLayer {
   layer: string;
-  icon: string;
   tools: { name: string; why: string }[];
+}
+
+/** One core architecture point: a short bold title + 2–3 plain-language sentences. */
+export interface HowItWorksPoint {
+  title: string;
+  body: string;
 }
 
 export interface Project {
   slug: string;
+  /** Listing + "next case study" order (ascending). */
+  order: number;
+  /** featured = full card + full case study; compact = small card + short page. */
+  tier: "featured" | "compact";
+  eyebrow: string;
   title: string;
-  logo: StaticImageData;
-  tagline: string;
   summary: string;
   role: string;
-  timeline: string;
-  teamSize: string;
-  accent: string; // hue used for this project's gradients
-  techChips: string[]; // overview card chips
-  headlineMetric: Metric;
-  problem: {
-    paragraphs: string[];
-    affected: string;
-    why: string;
+  /** Omit when unknown; the row is hidden. */
+  timeline?: string;
+  logo?: StaticImageData;
+  accent: string;
+  /** Shown on the OG image. */
+  techChips: string[];
+  overview?: {
+    problem: string[];
+    audience?: string;
   };
-  constraints: { label: string; value: string; note?: string }[];
-  architecture: {
-    views: DiagramView[];
-    notes: string[];
-  };
-  erDiagram: {
-    views: DiagramView[];
-    why: string;
-    notes: string[];
-  };
-  decisions: {
-    title: string;
-    decision: string;
-    alternatives: { name: string; note: string }[];
-    why: string;
-  }[];
-  challenges: {
-    title: string;
-    problem: string;
-    solution: string;
-    before?: CodeSample;
-    after?: CodeSample;
-    outcome: string;
-  }[];
-  results: {
-    metrics: Metric[];
-    chart?: ChartData;
-    notes?: string[];
-  };
+  media?: MediaItem[];
+  /** High-level view(s) for the interactive diagram. */
+  architecture?: DiagramView[];
+  howItWorks: HowItWorksPoint[];
   techStack: TechLayer[];
-  media: MediaItem[];
   links: ProjectLink[];
   og: { title: string; description: string };
 }

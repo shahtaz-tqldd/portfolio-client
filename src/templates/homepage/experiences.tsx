@@ -1,13 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowUpRight, Award, GraduationCap } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { experience, type Job } from "@/lib/data/experience";
-import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { Reveal } from "@/components/motion/Reveal";
-
-const summary = [{ value: "3+ years", label: "Professional Experience" }];
 
 const EDU_ACCENT = "#fbbf24";
 
@@ -97,29 +93,13 @@ export function Experience() {
 
   return (
     <section id="experience" className="relative py-20 sm:py-28">
-      <SectionBackground from="left" tint="cyan" />
-
       <div className="container-x">
-        {/* header + summary */}
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            index="04"
-            kicker="Experience"
-            title="My Journey in Software Engineering"
-            lead="From Engineering thinking to solving actual problems"
-          />
-
-          <Reveal delay={0.1}>
-            <dl className="flex gap-8 lg:justify-end">
-              {summary.map((s) => (
-                <div key={s.label}>
-                  <dt className="font-display text-3xl font-semibold tracking-tight text-fg">{s.value}</dt>
-                  <dd className="mt-0.5 font-mono text-[11px] text-muted">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-        </div>
+        <SectionHeading
+          index="03"
+          kicker="Experience"
+          title="Where I've shipped"
+          lead="Two teams, one thread: turning product needs into backend systems that keep running."
+        />
 
         {/* grid: featured left, stack right */}
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
@@ -179,7 +159,7 @@ export function Experience() {
                     <dd className="mt-0.5 font-mono text-[11px] text-muted">LeetCode problems solved</dd>
                   </div>
                   <div>
-                    <dt className="font-display text-2xl font-semibold tracking-tight text-fg">1420+</dt>
+                    <dt className="font-display text-2xl font-semibold tracking-tight text-fg">1430+</dt>
                     <dd className="mt-0.5 font-mono text-[11px] text-muted">CodeChef rating (2★)</dd>
                   </div>
                 </dl>

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Film, ImageIcon, Maximize2, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import type { MediaItem } from "@/lib/types";
 import { EASE, cn } from "@/lib/utils";
 
@@ -13,8 +13,8 @@ const spanClass: Record<NonNullable<MediaItem["span"]>, string> = {
   big: "sm:col-span-2 sm:row-span-2",
 };
 
-/** Bento media gallery with browser-frame placeholders, lightbox and lazy loading. */
-export function MediaGallery({ media, accent }: { media: MediaItem[]; accent: string }) {
+/** Bento media gallery with lightbox and lazy loading. Only items with a real src are passed in. */
+export function MediaGallery({ media }: { media: MediaItem[] }) {
   const [open, setOpen] = useState<number | null>(null);
 
   const close = useCallback(() => setOpen(null), []);
@@ -56,17 +56,13 @@ export function MediaGallery({ media, accent }: { media: MediaItem[]; accent: st
             )}
             aria-label={`Open media: ${m.caption}`}
           >
-            {m.src ? (
-              <Image
-                src={m.src}
-                alt={m.caption}
-                fill
-                sizes="(max-width: 640px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 ease-outexpo group-hover:scale-105"
-              />
-            ) : (
-              <PlaceholderMedia label={m.placeholderLabel ?? "Placeholder"} type={m.type} accent={accent} />
-            )}
+            <Image
+              src={m.src}
+              alt={m.caption}
+              fill
+              sizes="(max-width: 640px) 100vw, 50vw"
+              className="object-cover transition-transform duration-700 ease-outexpo group-hover:scale-105"
+            />
             <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-bg/95 via-bg/60 to-transparent p-3 pt-10">
               <span className="font-mono text-[10px] leading-snug tracking-wide text-muted">{m.caption}</span>
               <Maximize2 className="size-3.5 shrink-0 text-muted opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden />
@@ -123,24 +119,13 @@ export function MediaGallery({ media, accent }: { media: MediaItem[]; accent: st
               onClick={(e) => e.stopPropagation()}
             >
               <div className="overflow-hidden rounded-xl border border-line">
-                {media[open].src ? (
-                  <Image
-                    src={media[open].src!}
-                    alt={media[open].caption}
-                    width={1600}
-                    height={1000}
-                    className="h-auto w-full object-contain"
-                  />
-                ) : (
-                  <div className="aspect-video">
-                    <PlaceholderMedia
-                      label={media[open].placeholderLabel ?? "Placeholder"}
-                      type={media[open].type}
-                      accent={accent}
-                      large
-                    />
-                  </div>
-                )}
+                <Image
+                  src={media[open].src}
+                  alt={media[open].caption}
+                  width={1600}
+                  height={1000}
+                  className="h-auto w-full object-contain"
+                />
               </div>
               <figcaption className="mt-4 flex items-center justify-between font-mono text-xs text-muted">
                 <span>{media[open].caption}</span>
@@ -153,39 +138,5 @@ export function MediaGallery({ media, accent }: { media: MediaItem[]; accent: st
         ) : null}
       </AnimatePresence>
     </>
-  );
-}
-
-function PlaceholderMedia({
-  label,
-  type,
-  accent,
-  large,
-}: {
-  label: string;
-  type: "image" | "video";
-  accent: string;
-  large?: boolean;
-}) {
-  return (
-    <div className="relative flex size-full flex-col overflow-hidden bg-bg2">
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-40"
-        style={{ background: `radial-gradient(ellipse 70% 60% at 30% 20%, ${accent}22, transparent 70%)` }}
-      />
-      <div className="relative flex flex-1 items-center justify-center">
-        <div className="flex flex-col items-center gap-2.5 text-muted">
-          {type === "video" ? <Film className="size-6" /> : <ImageIcon className="size-6" />}
-          <span className={cn("px-4 text-center font-mono tracking-wide", large ? "text-xs" : "text-[10px]")}>{label}</span>
-          <span className="font-mono text-[9px] text-muted/60 uppercase">drop real media in project data</span>
-        </div>
-      </div>
-      {type === "video" ? (
-        <span aria-hidden className="absolute bottom-3 left-4 flex items-center gap-1.5 font-mono text-[9px] text-muted/70">
-          <i className="inline-block size-1.5 rounded-full bg-warm animate-blink" /> autoplay-muted loop (when src set)
-        </span>
-      ) : null}
-    </div>
   );
 }

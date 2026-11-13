@@ -3,7 +3,6 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Mail, Phone, Send, Sparkles, XIcon } from "lucide-react";
 import { site } from "@/lib/data/site";
-import { SectionBackground } from "@/components/backgrounds/SectionBackground";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -31,16 +30,28 @@ const socials = [
   { icon: XIcon, label: "X", hint: "Thoughts & builds", href: X_URL },
 ];
 
+const getLauncher = () =>
+  document
+    .querySelector("argon-chat-widget")
+    ?.shadowRoot?.querySelector<HTMLButtonElement>("button.argon-launcher");
+
 /**
- * Opens the Argon assistant. Wire this to whatever your widget exposes:
- * it fires a window event AND calls window.ArgonChat.open() if present.
- * Listen for "argon:open" in your chatbot component, or change the call below.
+ * Opens the chat assistant. The widget script exposes no JS open() API
+ * (its global only has mount()), but its shadow root is open and the
+ * launcher button toggles the chat panel, with aria-expanded reflecting state.
+ * The script loads afterInteractive, so retry until the widget has mounted.
  */
 const openAssistant = () => {
-  window.dispatchEvent(new CustomEvent("argon:open"));
-  (
-    window as unknown as { ArgonChat?: { open?: () => void } }
-  ).ArgonChat?.open?.();
+  let attempts = 0;
+  const tryOpen = () => {
+    const launcher = getLauncher();
+    if (!launcher) {
+      if (attempts++ < 20) setTimeout(tryOpen, 150);
+      return;
+    }
+    if (launcher.getAttribute("aria-expanded") !== "true") launcher.click();
+  };
+  tryOpen();
 };
 
 const inputClass =
@@ -69,17 +80,15 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative py-20 sm:py-28">
-      <SectionBackground from="right" tint="teal" />
-
       <div className="container-x">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
           {/* ───────── left: pitch + channels ───────── */}
           <div>
             <SectionHeading
-              index="06"
+              index="05"
               kicker="Contact"
-              title="Let's build something reliable."
-              lead="Need a backend, an AI feature, or a whole product shipped? Tell me what you're working on, or ask my assistant right now."
+              title="Let's build something that works."
+              lead="Hiring for a backend or AI role, or need an AI feature or a whole product built? Tell me what you're working on, or ask my assistant right now."
             />
 
             {/* assistant CTA */}
@@ -180,7 +189,7 @@ export function Contact() {
                 Send me a message
               </h3>
               <p className="mt-1.5 font-mono text-[11px] text-muted">
-                Usually replies within 24h, keep eyes on your email
+                I usually reply within 24 hours.
               </p>
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">

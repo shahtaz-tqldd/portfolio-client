@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProject, projects } from "@/lib/data/projects";
+import { getNextProject, getProject, projects } from "@/lib/data/projects";
 import { CaseStudy } from "@/templates/projects/case-study";
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -42,8 +44,5 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project) notFound();
 
-  const idx = projects.findIndex((p) => p.slug === project.slug);
-  const next = projects[(idx + 1) % projects.length];
-
-  return <CaseStudy project={project} next={next} />;
+  return <CaseStudy project={project} next={getNextProject(project.slug)} />;
 }

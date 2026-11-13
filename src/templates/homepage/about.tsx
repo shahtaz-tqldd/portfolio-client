@@ -1,170 +1,135 @@
 "use client";
 
-import { ArrowUpRight, GraduationCap, Network, Rocket, Server, Briefcase, Layers, type LucideIcon, Sparkles } from "lucide-react";
+import { Fragment } from "react";
+import { ArrowUpRight, Bot, Layers, Server, type LucideIcon } from "lucide-react";
 import { SectionHeading } from "@/components/motion/SectionHeading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 
-interface Focus {
-  icon: LucideIcon;
-  title: string;
-  line: string;
-  seenIn: string;
-  accent: string;
-}
+const stats = [
+  { value: "3+ yrs", label: "Professional backend experience" },
+  { value: "~2 yrs", label: "Shipping AI chatbots in production" },
+];
 
-/** Four things I'm hired for. Outcomes, not tools. */
-const focus: Focus[] = [
+/** What I'm hired for: reads as a role summary to recruiters, a service menu to clients. */
+const services: { icon: LucideIcon; title: string; line: string }[] = [
   {
-    icon: Network,
-    title: "System architecture",
-    line: "Multi-tenant SaaS and data models designed to grow without rewrites.",
-    seenIn: "Argon Chatbot",
-    accent: "#38bdf8",
+    icon: Bot,
+    title: "AI agents & RAG",
+    line: "Chatbots and agents grounded in your own data: ingestion, hybrid retrieval, tool use, memory and real-time voice.",
   },
   {
     icon: Server,
-    title: "Backend & integrations",
-    line: "Billing, webhooks and messaging channels that deliver reliably.",
-    seenIn: "Echologyx",
-    accent: "#a78bfa",
-  },
-  {
-    icon: Sparkles,
-    title: "AI agents & automation",
-    line: "Agents that retrieve, decide and act: grounded answers, lead scoring, bookings, human handoff.",
-    seenIn: "Echologyx · Tourtoise",
-    accent: "#8bf6d2",
-  },
-  {
-    icon: Rocket,
-    title: "Full products, solo",
-    line: "Idea to live product, interface included. One owner, no handoffs.",
-    seenIn: "Argon · Tourtoise",
-    accent: "#fbbf24",
-  },
-];
-
-const stats = [
-  { value: "3+ years", label: "Professional Experiences" },
-  { value: "20+", label: "Products Shipped on Live" },
-];
-
-const facts = [
-  {
-    icon: Briefcase,
-    label: "Now",
-    body: "Software Engineer (L2) at Echologyx Ltd.",
+    title: "Backends & integrations",
+    line: "Python APIs, async workers and webhooks that connect WhatsApp, Messenger, email, Slack and CRMs reliably.",
   },
   {
     icon: Layers,
-    label: "Shipped",
-    body: "Argon Chatbot · Tourtoise",
-  },
-  {
-    icon: GraduationCap,
-    label: "Education",
-    body: "B.Sc. Materials & Metallurgical Eng., BUET",
+    title: "Full products, end to end",
+    line: "From data model to React frontend to deployment on AWS or GCP. One engineer, no handoffs.",
   },
 ];
+
+/** Plain rows instead of cards. The first tool in each row is the one I reach for first. */
+const stack: { label: string; tools: string[] }[] = [
+  { label: "Languages", tools: ["Python", "TypeScript", "JavaScript"] },
+  { label: "Backend", tools: ["Django", "FastAPI", "Node.js", "Celery", "GraphQL", "WebSockets"] },
+  { label: "AI", tools: ["Google ADK", "RAG", "pgvector", "Pinecone", "Vertex AI"] },
+  { label: "Data", tools: ["PostgreSQL", "Redis", "MongoDB", "Firestore", "Kafka"] },
+  { label: "Cloud", tools: ["AWS", "GCP", "Docker", "nginx", "CI/CD"] },
+  { label: "Frontend", tools: ["React", "Next.js", "Redux Toolkit", "Tailwind CSS"] },
+];
+
+const subhead = "font-mono text-[11px] tracking-[0.22em] text-muted uppercase";
 
 export function About() {
   return (
     <section id="about" className="relative py-20 sm:py-28">
-      {/* <SectionBackground from="right" tint="cyan" /> */}
-
       <div className="container-x">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-          {/* ───────── left: pitch + proof ───────── */}
-          <div>
+        <div className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-0">
+          {/* ───────── left: who I am + stack ───────── */}
+          <div className="lg:pr-8 xl:pr-10">
             <SectionHeading
               index="01"
               kicker="About"
-              title="I build the whole product behind AI."
-              lead="Architecture, backend, agents and interface, all by one engineer. Three years of shipping multi-tenant SaaS and agentic systems that run billing, messaging and AI conversations in production."
+              title="Backend and AI systems that hold up in production."
+              lead="I've spent 3+ years as a backend engineer, the last two building AI chatbots for ecommerce: RAG pipelines, hybrid retrieval, multi-agent workflows and a real-time voice agent. I work mainly in Python and PostgreSQL, and I can build the React frontend too."
             />
 
-            <Reveal delay={0.1}>
-              <dl className="mt-8 flex flex-wrap gap-x-16 gap-y-4 border-y border-line py-5">
+            <h3 className={`mt-12 ${subhead}`}>Stack</h3>
+            <Reveal delay={0.1} y={16}>
+              <dl className="mt-4 grid grid-cols-[5.5rem_1fr] gap-x-4 border-t border-line text-sm sm:grid-cols-[6.5rem_1fr]">
+                {stack.map((row) => (
+                  <Fragment key={row.label}>
+                    <dt className="border-b border-line py-3.5 font-mono text-[11px] tracking-[0.12em] text-muted uppercase">
+                      {row.label}
+                    </dt>
+                    <dd className="border-b border-line py-3 leading-relaxed">
+                      {row.tools.map((t, i) => (
+                        <Fragment key={t}>
+                          {i > 0 && (
+                            <span aria-hidden className="mx-2 text-muted/40">
+                              /
+                            </span>
+                          )}
+                          <span className={i === 0 ? "font-medium text-fg" : "text-muted"}>{t}</span>
+                        </Fragment>
+                      ))}
+                    </dd>
+                  </Fragment>
+                ))}
+              </dl>
+            </Reveal>
+          </div>
+
+          {/* ───────── right: what I do + proof ───────── */}
+          <div className="flex flex-col lg:pt-2 lg:pl-8 xl:pl-10">
+            <h3 className={subhead}>What I do</h3>
+            <RevealGroup className="mt-4 divide-y divide-line border-t border-line" stagger={0.08}>
+              {services.map((s) => (
+                <RevealItem key={s.title}>
+                  <div className="flex gap-4 py-6">
+                    <span className="mt-0.5 grid size-10 shrink-0 place-items-center rounded-xl border border-accent/25 bg-accent/10 text-accent">
+                      <s.icon className="size-[18px]" aria-hidden />
+                    </span>
+                    <div>
+                      <p className="font-display text-lg font-semibold text-fg">{s.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted">{s.line}</p>
+                    </div>
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+
+            <Reveal delay={0.15}>
+              <dl className="mt-8 grid grid-cols-2 border-y border-line">
                 {stats.map((s) => (
-                  <div key={s.label}>
+                  <div key={s.label} className="py-5 pr-4 first:pl-0 [&:not(:first-child)]:pl-6">
                     <dt className="font-display text-3xl font-semibold tracking-tight text-fg">{s.value}</dt>
-                    <dd className="mt-0.5 font-mono text-[11px] text-muted">{s.label}</dd>
+                    <dd className="mt-1 text-xs leading-snug text-muted">{s.label}</dd>
                   </div>
                 ))}
               </dl>
             </Reveal>
 
-            <Reveal delay={0.18}>
-              <ul className="mt-5 space-y-3">
-                {facts.map((f) => (
-                  <li key={f.label} className="flex items-center gap-3.5">
-                    <span className="grid size-8 shrink-0 place-items-center rounded-lg border border-line bg-surface text-accent">
-                      <f.icon className="size-4" aria-hidden />
-                    </span>
-                    <span className="w-[4.5rem] shrink-0 font-mono text-[10px] tracking-[0.2em] text-muted uppercase">
-                      {f.label}
-                    </span>
-                    <span className="text-sm text-fg">{f.body}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal delay={0.26}>
-              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Reveal delay={0.2}>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
                 <a
-                  href="#projects"
+                  href="#contact"
                   className="group inline-flex items-center gap-1.5 font-mono text-[11px] tracking-widest text-accent uppercase"
                 >
-                  See the projects
+                  Start a project
                   <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
                 <a
                   href="#experience"
                   className="group inline-flex items-center gap-1.5 font-mono text-[11px] tracking-widest text-muted uppercase transition-colors hover:text-fg"
                 >
-                  Full experience
+                  See experience
                   <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
               </div>
             </Reveal>
           </div>
-
-          {/* ───────── right: 2x2 focus cards ───────── */}
-          <RevealGroup className="grid gap-3 sm:grid-cols-2 sm:gap-4" stagger={0.08}>
-            {focus.map((f, i) => (
-              <RevealItem key={f.title}>
-                <div className="card group relative flex h-full min-h-[210px] flex-col overflow-hidden p-5 transition-all duration-500 hover:-translate-y-0.5 sm:p-6">
-                  {/* ambient accent glow */}
-                  <div
-                    className="pointer-events-none absolute -top-16 -right-16 size-44 rounded-full opacity-60 blur-3xl transition-opacity duration-500 group-hover:opacity-100"
-                    style={{ background: `${f.accent}26` }}
-                    aria-hidden
-                  />
-
-                  <div className="relative flex items-start justify-between">
-                    <span
-                      className="grid size-11 place-items-center rounded-xl border bg-[var(--code-bg)]"
-                      style={{ borderColor: `${f.accent}66`, boxShadow: `0 0 20px -6px ${f.accent}` }}
-                    >
-                      <f.icon className="size-5" style={{ color: f.accent }} aria-hidden />
-                    </span>
-                    <span className="font-mono text-[10px] tracking-[0.2em] text-muted">0{i + 1}</span>
-                  </div>
-
-                  <h3 className="relative mt-5 font-display text-2xl leading-tight font-semibold text-fg">
-                    {f.title}
-                  </h3>
-                  <p className="relative mt-2 text-sm leading-snug text-muted">{f.line}</p>
-
-                  <p className="relative mt-auto pt-5 font-mono text-[10px] tracking-[0.15em] text-muted uppercase">
-                    <span style={{ color: f.accent }}>●</span>
-                    <span className="ml-2">{f.seenIn}</span>
-                  </p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
         </div>
       </div>
     </section>

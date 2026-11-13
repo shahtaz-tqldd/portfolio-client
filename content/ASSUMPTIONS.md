@@ -1,27 +1,18 @@
 # Assumptions & honesty notes
 
-Everything a reader might mistake for a measured fact is listed here.
+## Diagrams
 
-## Illustrative (reasonable, but designed by me — not a deployment map)
+- **Architecture diagrams** show the high-level components and how they connect, as described in each
+  project's "How it works". Layout and grouping are drawn for readability; they are not a deployment map.
 
-- **Architecture diagrams** (Argon & Tourtoise): component granularity, edge routing and grouping are
-  reconstructed from the tech stack and feature descriptions. They reflect design intent.
-- **ER diagrams**: table/column shapes are consistent with the described features (tenants, RAG chunks,
-  conversations, leads, appointments; trips, days, items, budgets). Real migrations may differ in names
-  and detail.
-- **Flow step-throughs**: step order is how the pipeline is designed to behave.
-- **Charts** flagged `ILLUSTRATIVE`: shapes show the design change (e.g. top-k retrieval vs prompt
-  stuffing) — they are not measured production numbers.
-- **Code snippets** in Challenges: stylized before/after of the real fix approach, condensed for reading.
+## Rules for project content
 
-## Placeholders (waiting on real values)
-
-- Anywhere you see `[METRIC: …]` — latency, token-reduction, duplicate-rate, acceptance-rate numbers.
-- `[ADD: …]` — observability and CI/CD tool entries in tech stacks.
-- All screenshots/videos are labelled placeholder frames until real media is dropped in.
-- External links (`[GITHUB_URL]`, `[ARGON_LIVE_URL]`, …) and `/resume.pdf`.
+- No placeholder text, no invented metrics, numbers or tools. Unknown fields are left out and hidden.
+- Restro FX and E-commerce use only the facts confirmed so far. Add their timelines, links, stack,
+  analytics metrics, order states and payment details once confirmed.
 
 ## Factual
 
-- Experience bullets, roles, dates, education, achievements (LeetCode 125+, CodeChef 1420+ 2-star)
-  and listed core skills come from the supplied résumé content.
+- Experience bullets, roles, dates, education, achievements (LeetCode 125+, CodeChef 1430+ 2-star)
+  and listed core skills come from the résumé.
+- VegaBot and Tourtoise links come from the résumé. Network Monitor facts come from its README and manifest.

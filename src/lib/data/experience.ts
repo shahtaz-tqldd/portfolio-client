@@ -24,31 +24,31 @@ export const experience: Job[] = [
     role: "Software Engineer (L2)",
     company: "Echologyx Ltd.",
     about:
-      "Software company building AI-powered chatbot solutions that help businesses automate customer conversations across digital channels.",
+      "Builds AI chatbot products that answer customers and recommend products for ecommerce businesses, across web, social and email.",
     start: new Date(2024, 2),
     end: null,
     periodLabel: "Mar 2024 – Present",
     accent: "#FA4B00",
     highlights: [
       {
-        lead: "SaaS architecture",
-        text: "Built multi-tenant backend services with subscription and Stripe billing.",
+        lead: "Multi-agent rebuild, ~3× faster",
+        text: "Led R&D to move the chatbot engine from LangChain, OpenAI and Elasticsearch to a multi-agent architecture on Google ADK, cutting replies from ~12s to ~4–5s with caching and context compaction.",
       },
       {
-        lead: "AI agent engineering",
-        text: "Developed RAG-powered conversational systems using Google ADK and FastAPI.",
+        lead: "Cheaper, better retrieval",
+        text: "Benchmarked Vertex AI against Pinecone and moved to Pinecone hybrid search for product recommendations and follow-up answers at lower cost.",
       },
       {
-        lead: "Retrieval optimization",
-        text: "Implemented vector search for knowledge retrieval and product recommendations.",
+        lead: "One knowledge base, every channel",
+        text: "Connected Messenger, Instagram, WhatsApp and email (Amazon SES, Gmail and Outlook via OAuth) through async webhooks with retries.",
       },
       {
-        lead: "Omnichannel messaging",
-        text: "Integrated Messenger, WhatsApp, Instagram and transactional email.",
+        lead: "Team & CRM integrations",
+        text: "Built notification and ticketing integrations with Slack, Microsoft Teams and HubSpot CRM.",
       },
       {
-        lead: "Real-time infrastructure",
-        text: "Worked on WebSockets, Redis and asynchronous workflows for live operations.",
+        lead: "Secure training pipeline",
+        text: "RSA-signed file uploads and malware scanning (AWS EventBridge + GuardDuty) before files reach the knowledge base.",
       },
     ],
     details: {
@@ -95,9 +95,9 @@ export const experience: Job[] = [
     },
   },
   {
-    slug: "aaykori",
+    slug: "ayykori",
     role: "MERN Stack Developer",
-    company: "Aaykori Digital",
+    company: "Ayykori Digital",
     about:
       "A fintech startup developing affiliate marketplace and custom softwares for niche industries.",
     start: new Date(2023, 6),
@@ -106,16 +106,16 @@ export const experience: Job[] = [
     accent: "#35e696",
     highlights: [
       {
-        lead: "Affiliate marketplace",
-        text: "Developed CMS features for product listings, campaign tracking and analytics.",
+        lead: "Affiliate management platform",
+        text: "Built core modules for a fintech startup: product listings, campaign tracking and admin analytics, across the Node.js backend and React frontend.",
       },
       {
-        lead: "HR management",
-        text: "Built employee management modules and real-time performance dashboards.",
+        lead: "Internal HRM",
+        text: "Built leave management and attendance modules end to end, from REST APIs to the UI.",
       },
       {
-        lead: "Full-stack development",
-        text: "Created REST APIs and reusable React components across products.",
+        lead: "Shared foundations",
+        text: "Reusable React and Material UI components and secure REST APIs used across both products.",
       },
     ],
     details: {

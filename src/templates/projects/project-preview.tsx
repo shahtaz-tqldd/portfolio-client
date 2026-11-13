@@ -5,8 +5,8 @@ import type { StaticImageData } from "next/image";
 import { hashCode, mulberry32 } from "@/lib/utils";
 
 /**
- * Deterministic placeholder "screenshot": a themed mini node-graph in a browser frame.
- * Replace by giving projects real media — this keeps cards lively without fake images.
+ * Deterministic decorative preview: a themed mini node-graph with the project's
+ * logo (or its initials when there's no logo) in the middle.
  */
 export function ProjectPreview({
   seed,
@@ -17,7 +17,7 @@ export function ProjectPreview({
   seed: string;
   accent: string;
   label: string;
-  logo: StaticImageData;
+  logo?: StaticImageData;
 }) {
   const rand = mulberry32(hashCode(seed));
   const w = 560;
@@ -75,15 +75,26 @@ export function ProjectPreview({
       </svg>
       <div className="absolute inset-0 grid place-items-center">
         <div className="grid size-24 place-items-center rounded-2xl p-5 bg-slate-500/10 dark:bg-white/5 transition-transform duration-500 group-hover:scale-105 sm:size-28">
-          <Image
-            src={logo}
-            alt={`${label} logo`}
-            width={180}
-            height={120}
-            className="max-h-full max-w-full object-contain"
-          />
+          {logo ? (
+            <Image
+              src={logo}
+              alt={`${label} logo`}
+              width={180}
+              height={120}
+              className="max-h-full max-w-full object-contain"
+            />
+          ) : (
+            <span className="font-display text-3xl font-semibold tracking-tight" style={{ color: accent }} aria-hidden>
+              {initials(label)}
+            </span>
+          )}
         </div>
       </div>
     </div>
   );
+}
+
+function initials(label: string) {
+  const words = label.split(/\s+/).filter(Boolean);
+  return (words.length > 1 ? words[0][0] + words[1][0] : label.slice(0, 2)).toUpperCase();
 }

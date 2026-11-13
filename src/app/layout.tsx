@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "@/assets/styles/globals.css";
 import { site } from "@/lib/data/site";
@@ -49,6 +50,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${display.variable} ${sans.variable} ${mono.variable} font-sans`}>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <Script
+          src="https://algochatbot-widget.vercel.app/widget.js"
+          data-chatbot="2Us1390AdemfcY16Rvyneiw3yhI70v8GoIq8J04JF7U"
+          strategy="afterInteractive"
+        />
         <ThemeProvider>
           <SmoothScroll>
             <a

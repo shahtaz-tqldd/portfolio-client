@@ -20,7 +20,7 @@
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
-  --container-content: 72rem;
+  --container-content: 76rem;
 
   --ease-outexpo: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -48,6 +48,12 @@
   --grid: rgba(148, 163, 184, 0.055);
   --code-bg: rgba(3, 5, 9, 0.72);
   --shadow-card: 0 24px 48px -24px rgba(0, 0, 0, 0.65);
+
+  /* homepage aurora washes (PageBackdrop) */
+  --aurora-emerald: rgba(23, 206, 120, 0.16);
+  --aurora-cyan: rgba(34, 211, 238, 0.11);
+  --aurora-indigo: rgba(99, 102, 241, 0.13);
+  --aurora-amber: rgba(245, 165, 36, 0.08);
 
   /* diagram node palette by kind */
   --k-client: #38bdf8;
@@ -83,6 +89,11 @@ html.light {
   --grid: rgba(15, 23, 42, 0.05);
   --code-bg: rgba(10, 14, 22, 0.96); /* code stays dark in light mode */
   --shadow-card: 0 20px 40px -24px rgba(15, 23, 42, 0.25);
+
+  --aurora-emerald: rgba(20, 164, 97, 0.12);
+  --aurora-cyan: rgba(8, 145, 178, 0.09);
+  --aurora-indigo: rgba(99, 102, 241, 0.1);
+  --aurora-amber: rgba(217, 119, 6, 0.08);
 
   --k-client: #0284c7;
   --k-widget: #0284c7;
@@ -209,6 +220,7 @@ body {
     -webkit-text-stroke: 1px var(--line-strong);
     color: transparent;
   }
+
 }
 
 @keyframes fadeIn {
@@ -226,13 +238,6 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.15; }
 }
-
-/* ------------------------------ code tokens ------------------------------- */
-
-.tok-c { color: #7c8798; font-style: italic; }
-.tok-s { color: #9ecbff; }
-.tok-k { color: #5eead4; }
-.tok-n { color: #f5a524; }
 
 /* -------------------------------- diagrams -------------------------------- */
 

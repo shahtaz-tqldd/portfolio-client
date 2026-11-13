@@ -31,7 +31,7 @@ export function NodeNetwork({ className, density = 0.00007, maxNodes = 80, inter
     if (!ctx) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const rand = mulberry32(hashCode("argon-network"));
+    const rand = mulberry32(hashCode("node-network"));
     let raf = 0;
     let running = true;
     let width = 0;

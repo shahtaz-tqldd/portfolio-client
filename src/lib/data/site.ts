@@ -1,24 +1,27 @@
 export const site = {
   name: "Shahtaz Rahman",
   shortName: "Shahtaz",
-  role: "Software Engineer",
-  roleDetail: "Backend · System Architecture · Database Design · AI Systems",
+  role: "Backend Software Engineer",
+  roleDetail: "Backend Software Engineer · RAG & LLM Applications",
+  /** Shown in the hero kicker. Edit or blank out when you're not taking work. */
+  availability: "Open to relocate",
+  pitch: "I build backend systems and LLM-powered applications, specializing in AI agents and RAG pipelines. I care about clean data models, fast responses and low LLM costs.",
   location: "Dhaka, Bangladesh",
   email: "shahtaz67@gmail.com",
-  url: "https://shahtaz.com", // TODO: replace with your real domain
-  github: "https://github.com/shahtaz-tqldd", // TODO: replace
-  linkedin: "https://www.linkedin.com/in/shahtazrahman", // TODO: replace
+  url: "https://www.shahtaz.dev",
+  github: "https://github.com/shahtaz-tqldd", 
+  linkedin: "https://www.linkedin.com/in/shahtazrahman",
   resume: "/resume.pdf",
   resumePage: "/resume",
-  leetcode: "https://leetcode.io/profile/shahtaz67", // TODO: replace with profile
-  codechef: "https://www.codechef.com/shahtaz", // TODO: replace with profile
-  bio: "Full-stack software engineer with 3 years of experience building scalable backend systems and AI-powered applications. I work with Python, Django, and FastAPI, and I specialize in multi-tenant SaaS architecture, distributed/asynchronous workflows, RAG pipelines, and agentic AI systems.",
+  leetcode: "https://leetcode.io/profile/shahtaz67",
+  codechef: "https://www.codechef.com/shahtaz",
+  bio: "Backend software engineer with 3+ years of experience, including ~2 years building production AI chatbot systems. I build RAG pipelines, hybrid retrieval, agentic workflows and real-time voice agents in Python (Django, FastAPI) and PostgreSQL, and ship end to end on AWS and GCP.",
   valueStatement: "I build scalable backends and agentic AI systems.",
   nav: [
     { id: "about", label: "About" },
-    { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
+    { id: "writing", label: "Writing" },
     { id: "contact", label: "Contact" },
   ],
 } as const;
