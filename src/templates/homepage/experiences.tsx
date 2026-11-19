@@ -127,10 +127,10 @@ export function Experience() {
               >
                 <div className="flex items-start gap-4">
                   <span
-                    className="grid size-10 shrink-0 place-items-center rounded-xl border bg-[var(--code-bg)]"
+                    className="grid size-10 shrink-0 place-items-center rounded-xl border bg-warm/10"
                     style={{ borderColor: `${EDU_ACCENT}66`, boxShadow: `0 0 18px -6px ${EDU_ACCENT}` }}
                   >
-                    <GraduationCap className="size-5" style={{ color: EDU_ACCENT }} aria-hidden />
+                    <GraduationCap className="size-5 text-warm" aria-hidden />
                   </span>
                   <div className="min-w-0">
                     <p

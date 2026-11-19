@@ -705,7 +705,7 @@ const vegabot: Project = {
     },
   ],
   links: [
-    { label: "Live demo", href: "https://vegabot.shahtaz.dev", kind: "live" },
+    { label: "Live demo", href: "https://vegabot.shahtaz.dev/login?email=shahtaz67@gmail.com&password=test@1A23", kind: "live" },
     {
       label: "Backend source",
       href: "https://github.com/shahtaz-tqldd/vegabot-server",

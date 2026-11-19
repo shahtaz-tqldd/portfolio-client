@@ -1,5 +1,5 @@
 import type { Project } from "@/lib/types";
-import restroLogo from "@/assets/images/restro-logo.png";
+import restroLogo from "@/assets/images/restro-logo.svg";
 
 /* ──────────────────────────────── Restro FX ─────────────────────────────── */
 
